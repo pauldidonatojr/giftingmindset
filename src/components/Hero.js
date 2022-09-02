@@ -147,17 +147,27 @@ const Wrapper = styled.div`
   color: var(--clr-font);
  }
  @media (min-width: 576px) {
+  margin-bottom: 3rem;
+  .gfm {
+   width: 315px;
+   height: 225px;
+  }
   .section-center {
-   background-color: var(--clr-primary-1);
    border-radius: 2%;
-
    height: 50vh;
+   width: 45vh;
+   padding: 2.5rem;
   }
   .header {
-   font-size: 2.5rem;
+   font-size: 1.65rem;
+   margin-bottom: 5rem;
+  }
+  .submit-btn {
+   font-size: 1.2rem;
+   padding: 0.55rem 1rem;
   }
   .content {
-   height: 60vh;
+   height: 40vh;
   }
  }
  @media only screen and (max-width: 600px) {
