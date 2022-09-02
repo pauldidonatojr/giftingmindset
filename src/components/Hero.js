@@ -147,8 +147,7 @@ const Wrapper = styled.div`
   color: var(--clr-font);
  }
  @media (min-width: 576px) {
-  margin-bottom: 3rem;
-  .gfm {
+  = .gfm {
    width: 315px;
    height: 225px;
   }
@@ -171,7 +170,6 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (max-width: 600px) {
-  margin-bottom: 3rem;
   .gfm {
    width: 315px;
    height: 225px;
