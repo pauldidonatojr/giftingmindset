@@ -5,7 +5,7 @@ const Footer = () => {
   <Wrapper>
    <h5>
     &copy; {new Date().getFullYear()}
-    <span> © 2022 All Rights Reserved. </span>
+    <span> All Rights Reserved. </span>
    </h5>
    <h5> Gifting Mindset.</h5>
   </Wrapper>
