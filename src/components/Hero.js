@@ -161,9 +161,10 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (max-width: 600px) {
+  margin-bottom: 3rem;
   .gfm {
-   width: 55px;
-   height: 65px;
+   width: 315px;
+   height: 225px;
   }
   .section-center {
    border-radius: 2%;
@@ -180,7 +181,6 @@ const Wrapper = styled.div`
    padding: 0.55rem 1rem;
   }
   .content {
-   background-color: blue;
    height: 40vh;
   }
  }
