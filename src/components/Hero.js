@@ -147,7 +147,7 @@ const Wrapper = styled.div`
   color: var(--clr-font);
  }
  @media (min-width: 576px) {
-  = .gfm {
+  .gfm {
    width: 315px;
    height: 225px;
   }
