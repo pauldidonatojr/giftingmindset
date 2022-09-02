@@ -1,5 +1,5 @@
 import Navbar from './Navbar.js'
 import Hero from './Hero.js'
 import Footer from './Footer.js'
-
-export { Navbar, Hero, Footer }
+import Tabs from './Tabs.js'
+export { Navbar, Hero, Footer, Tabs }

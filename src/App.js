@@ -3,13 +3,14 @@ import {
  Routes, // instead of "Switch"
  Route,
 } from 'react-router-dom'
-import { Navbar, Footer } from './components/index'
+import { Navbar, Footer, Tabs} from './components/index'
 import { HomePage } from './pages/index'
 
 function App() {
  return (
   <BrowserRouter>
-   <Navbar />
+         <Navbar />
+<Tabs/>
    <Routes>
     <Route path="/" element={<HomePage />}></Route>
    </Routes>

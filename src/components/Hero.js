@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 import { FaWindowClose } from 'react-icons/fa'
-
 const Hero = () => {
  return (
   <Wrapper>
    <div className="section-center">
     <div className="content">
+     <img
+      src="https://res.cloudinary.com/elpawl-llc/image/upload/v1662156689/gfm_hllgaz.png"
+      alt="images"
+      className="gfm"
+     />
      <h2 class="title">
       <span class="title-word title-word-1">The</span>
       <span class="title-word title-word-2">Gifting</span>
@@ -60,9 +64,10 @@ const Wrapper = styled.div`
  .section-center {
   width: 100%;
   transition: var(--transition);
-  /* background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1652788878/brlogo_vtatak.jpg')
+
+  background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1662157426/62bf2c4821e06_jp3xf4.jpg')
    no-repeat center center;
-  background-size: cover; */
+  background-size: cover;
  }
  .content {
   display: grid;
@@ -70,6 +75,7 @@ const Wrapper = styled.div`
   text-align: center;
   color: #fff;
   transition: var(--transition);
+  background-color: rgb(35, 31, 32);
   p {
    color: #fff;
    font-size: 1.5rem;
@@ -151,19 +157,19 @@ const Wrapper = styled.div`
    font-size: 2.5rem;
   }
   .content {
-   height: 40vh;
+   height: 60vh;
   }
  }
  @media only screen and (max-width: 600px) {
+  .gfm {
+   width: 55px;
+   height: 65px;
+  }
   .section-center {
-   background-color: green;
    border-radius: 2%;
    height: 50vh;
    width: 45vh;
    padding: 2.5rem;
-   /* background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1652788878/brlogo_vtatak.jpg')
-    no-repeat center center;
-   background-size: cover; */
   }
   .header {
    font-size: 1.65rem;
@@ -179,11 +185,15 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (min-width: 600px) {
+  .gfm {
+   width: 315px;
+   height: 225px;
+  }
   .section-center {
    display: grid;
    justify-content: center;
    align-items: center;
-   background-color: green;
+
    border-radius: 2%;
    height: 60vh;
    width: 50vh;
@@ -202,7 +212,6 @@ const Wrapper = styled.div`
    padding: 0.55rem 1rem;
   }
   .content {
-   background-color: black;
    height: 40vh;
    width: 40vh;
    display: grid;
@@ -265,6 +274,10 @@ const Wrapper = styled.div`
   }
  }
  @media (min-width: 1280px) {
+  .gfm {
+   width: 365px;
+   height: 245px;
+  }
   .section-center {
    margin-top: 2rem;
    height: 60vh;
@@ -283,12 +296,8 @@ const Wrapper = styled.div`
    font-size: 3em;
   }
   .content {
-   grid-column: 5/6;
-   grid-row: 1/2;
    width: 50vh;
-   height: 40vh;
-   margin-left: 20rem;
-   grid-gap: 2rem;
+   height: 50vh;
   }
   .title {
    font-size: 2.7vw;
