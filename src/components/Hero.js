@@ -170,8 +170,9 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (max-width: 600px) {
+  min-height: 15rem;
   .title {
-   font-size: 1.7vw;
+   font-size: 2.7vw;
   }
   .gfm {
    width: 225px;
