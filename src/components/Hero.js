@@ -171,8 +171,7 @@ const Wrapper = styled.div`
  }
  @media only screen and (max-width: 600px) {
   .gfm {
-   width: 315px;
-   height: 225px;
+   display: none;
   }
   .section-center {
    border-radius: 2%;
@@ -229,7 +228,7 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (min-width: 768px) and (max-width: 790px) {
-  min-height: 35rem;
+  min-height: 15rem;
   .section-center {
    background-color: lightblue;
    height: 65vh;
