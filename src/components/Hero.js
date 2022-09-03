@@ -170,8 +170,12 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (max-width: 600px) {
+  .title {
+   font-size: 1.7vw;
+  }
   .gfm {
-   display: none;
+   width: 225px;
+   height: 165px;
   }
   .section-center {
    border-radius: 2%;
@@ -228,7 +232,7 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (min-width: 768px) and (max-width: 790px) {
-  min-height: 15rem;
+  min-height: 35rem;
   .section-center {
    background-color: lightblue;
    height: 65vh;
