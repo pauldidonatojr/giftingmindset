@@ -119,15 +119,20 @@ const Wrapper = styled.div`
   color: var(--clr-font);
  }
  @media (min-width: 576px) {
+  .title {
+   font-size: 6.7vw;
+  }
   .gfm {
-   width: 315px;
-   height: 225px;
+   width: 225px;
+   height: 165px;
   }
   .section-center {
    border-radius: 2%;
    height: 50vh;
    width: 45vh;
    padding: 2.5rem;
+   margin-bottom: 5rem;
+   margin-top: 1rem;
   }
 
   .content {
