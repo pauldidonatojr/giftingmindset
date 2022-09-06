@@ -149,7 +149,7 @@ const Wrapper = styled.footer`
   height: 10rem;
  }
  @media (min-width: 992px) {
-  height: 10rem;
+  height: 12rem;
  }
 
  @media (min-width: 1280px) {
@@ -158,4 +158,3 @@ const Wrapper = styled.footer`
 `
 
 export default Footer
- 
