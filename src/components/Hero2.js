@@ -150,7 +150,7 @@ const Wrapper = styled.div`
    padding: 2.5rem;
   }
 
- 
+
   .content {
    height: 40vh;
   }

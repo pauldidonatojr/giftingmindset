@@ -16,7 +16,6 @@ const Wrapper = styled.div`
 
  height: 100%;
  width: 100%;
- padding: 2.5rem;
 
  @media (min-width: 576px) {
   height: 50rem;
@@ -24,7 +23,6 @@ const Wrapper = styled.div`
 
  @media only screen and (max-width: 600px) {
   height: 40rem;
-
  }
 
  @media only screen and (min-width: 600px) {
