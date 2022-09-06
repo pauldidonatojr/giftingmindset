@@ -150,10 +150,7 @@ const Wrapper = styled.div`
    padding: 2.5rem;
   }
 
-  .submit-btn {
-   font-size: 1.2rem;
-   padding: 0.55rem 1rem;
-  }
+ 
   .content {
    height: 40vh;
   }

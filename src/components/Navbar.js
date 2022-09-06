@@ -76,7 +76,7 @@ const Wrapper = styled.nav`
   transform: rotate(90deg);
  }
  .logo {
-  height: 65px;
+  height: 45px;
   width: 125px;
  }
 
