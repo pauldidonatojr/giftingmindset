@@ -135,24 +135,23 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (max-width: 600px) {
-  min-height: 20rem;
   .title {
-   font-size: 5.5vw;
+   font-size: 6.7vw;
   }
   .gfm {
-   width: 210px;
-   height: 150px;
+   width: 225px;
+   height: 165px;
   }
   .section-center {
    border-radius: 2%;
    height: 45vh;
-   width: 40vh;
+   width: 45vh;
    padding: 2.5rem;
-   margin-bottom: 3rem;
+   margin-bottom: 5rem;
   }
 
   .content {
-   height: 35vh;
+   height: 40vh;
   }
  }
  @media only screen and (min-width: 600px) {
