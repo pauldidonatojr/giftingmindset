@@ -170,7 +170,7 @@ const Wrapper = styled.div`
 
    border-radius: 2%;
    height: 50vh;
-   width: 50vh;
+   width: 40vh;
    padding: 2.5rem;
    margin-bottom: 15rem;
    /* background-color: red; */
@@ -195,7 +195,6 @@ const Wrapper = styled.div`
  @media only screen and (min-width: 768px) and (max-width: 790px) {
   min-height: 35rem;
   .section-center {
-
    height: 55vh;
    width: 55vh;
    grid-gap: 1.5rem;
