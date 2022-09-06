@@ -137,22 +137,22 @@ const Wrapper = styled.div`
  @media only screen and (max-width: 600px) {
   min-height: 20rem;
   .title {
-   font-size: 6.7vw;
+   font-size: 5.5vw;
   }
   .gfm {
-   width: 225px;
-   height: 165px;
+   width: 210px;
+   height: 150px;
   }
   .section-center {
    border-radius: 2%;
-   height: 50vh;
-   width: 45vh;
+   height: 45vh;
+   width: 40vh;
    padding: 2.5rem;
-   margin-bottom: 5rem;
+   margin-bottom: 3rem;
   }
 
   .content {
-   height: 40vh;
+   height: 35vh;
   }
  }
  @media only screen and (min-width: 600px) {
