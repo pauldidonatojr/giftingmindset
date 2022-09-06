@@ -19,21 +19,25 @@ function TabsBar() {
       <Tab
        className="tabs1"
        label="About"
-       style={{ fontSize: '1.25rem', marginRight: '1rem' }}
+       style={{ fontSize: '0.5rem', marginRight: '0.5rem' }}
       />
      </Link>
      <Link to="/">
       <Tab
        className="tabs2"
        label="Process"
-       style={{ fontSize: '1.25rem', marginRight: '1rem', marginLeft: '1rem' }}
+       style={{
+        fontSize: '0.5rem',
+        marginRight: '0.5rem',
+        marginLeft: '0.5rem',
+       }}
       />
      </Link>
      <Link to="/">
       <Tab
        className="tabs3"
        label="Contact"
-       style={{ fontSize: '1.25rem', marginLeft: '1rem' }}
+       style={{ fontSize: '0.5rem', marginLeft: '0.5rem' }}
       />
      </Link>
      {/* <Tab label="Item Four" />
