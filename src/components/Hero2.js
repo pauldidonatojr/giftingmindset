@@ -144,10 +144,11 @@ const Wrapper = styled.div`
   }
   .section-center {
    border-radius: 2%;
-   height: 45vh;
+   height: 50vh;
    width: 45vh;
    padding: 2.5rem;
    margin-bottom: 5rem;
+   margin-top: 1rem;
   }
 
   .content {
