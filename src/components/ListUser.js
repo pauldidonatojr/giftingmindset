@@ -2,9 +2,9 @@ import React from 'react'
 
 function ListUser() {
   return (
-    <div>
-      
-    </div>
+
+      <h1>List Users</h1>
+
   )
 }
 

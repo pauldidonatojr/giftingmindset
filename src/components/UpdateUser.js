@@ -1,7 +1,7 @@
 import React from 'react'
 
 function UpdateUser() {
- return <div></div>
+ return <h1>Update User</h1>
 }
 
 export default UpdateUser

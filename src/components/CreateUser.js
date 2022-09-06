@@ -1,7 +1,7 @@
 import React from 'react'
 
 function CreateUser() {
- return <div></div>
+ return <h1>List Users</h1>
 }
 
 export default CreateUser

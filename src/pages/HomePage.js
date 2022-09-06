@@ -26,7 +26,6 @@ const Wrapper = styled.div`
  }
 
  @media only screen and (min-width: 600px) {
-  background-color: blue;
   height: 40rem;
  }
 
