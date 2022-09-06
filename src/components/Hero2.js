@@ -148,8 +148,8 @@ const Wrapper = styled.div`
    height: 50vh;
    width: 45vh;
    padding: 2.5rem;
+   margin-bottom: 5rem;
   }
-
 
   .content {
    height: 40vh;
