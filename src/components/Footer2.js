@@ -15,7 +15,7 @@ const Footer2 = () => {
 const Wrapper = styled.footer`
  min-height: 10vh;
  width: 100%;
- position: absolute;
+
  font-family: roboto;
  bottom: 0;
  display: flex;
