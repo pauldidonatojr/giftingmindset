@@ -10,11 +10,7 @@ const Hero2 = () => {
       alt="images"
       className="gfm"
      />
-     <h2 class="title">
-      <span class="title-word title-word-1">The</span>
-      <span class="title-word title-word-2">Gifting</span>
-      <span class="title-word title-word-3">Mindset</span>
-     </h2>
+
     </div>
    </div>
   </Wrapper>
@@ -37,9 +33,11 @@ const Wrapper = styled.div`
  .section-center {
   width: 100%;
   transition: var(--transition);
-  background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1662157426/62bf2c4821e06_jp3xf4.jpg')
+
+
+   /* background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1662157426/62bf2c4821e06_jp3xf4.jpg')
    no-repeat center center;
-  background-size: cover;
+  background-size: cover; */
  }
  .content {
   display: grid;
@@ -119,9 +117,7 @@ const Wrapper = styled.div`
   color: var(--clr-font);
  }
  @media (min-width: 576px) {
-  .title {
-   font-size: 6.7vw;
-  }
+
   .gfm {
    width: 225px;
    height: 165px;
@@ -140,9 +136,7 @@ const Wrapper = styled.div`
   }
  }
  @media only screen and (max-width: 600px) {
-  .title {
-   font-size: 6.7vw;
-  }
+
   .gfm {
    width: 225px;
    height: 165px;
@@ -253,7 +247,7 @@ const Wrapper = styled.div`
    display: grid;
    align-items: flex-start;
    border-radius: 2%;
-   background-color: red;
+
    /* background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1652788878/brlogo_vtatak.jpg')
     no-repeat center center; */
    background-size: cover;
@@ -264,9 +258,7 @@ const Wrapper = styled.div`
    width: 50vh;
    height: 50vh;
   }
-  .title {
-   font-size: 2.7vw;
-  }
+
  }
 `
 

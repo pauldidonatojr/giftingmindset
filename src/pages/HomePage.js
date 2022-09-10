@@ -9,12 +9,16 @@ function HomePage() {
   </Wrapper>
  )
 }
+
 const Wrapper = styled.div`
  display: grid;
 
- background-color: var(--clr-white);
+ /* background-color: var(--clr-white); */
 
- height: 100%;
+ background: url('https://res.cloudinary.com/elpawl-llc/image/upload/v1662157426/62bf2c4821e06_jp3xf4.jpg')
+  no-repeat center center;
+ background-size: cover;
+ height: 60rem;
  width: 100%;
 
  @media (min-width: 576px) {
@@ -22,23 +26,23 @@ const Wrapper = styled.div`
  }
 
  @media only screen and (max-width: 600px) {
-  height: 40rem;
+  height: 65rem;
  }
 
  @media only screen and (min-width: 600px) {
-  height: 40rem;
+  height: 65rem;
  }
 
  @media only screen and (min-width: 768px) {
-  height: 40rem;
+  height: 65rem;
  }
 
  @media (min-width: 992px) {
-  height: 40rem;
+  height: 65rem;
  }
 
  @media (min-width: 1280px) {
-  height: 40rem;
+  height: 65rem;
  }
 `
 export default HomePage

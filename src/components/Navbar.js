@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import PersonIcon from '@mui/icons-material/Person'
-import Tabs from './Tabs'
+
 
 const Navbar = () => {
  var navStatus = false
@@ -24,14 +23,7 @@ const Navbar = () => {
  return (
   <Wrapper>
    <div className="nav-center">
-    <Link to="">
-     {' '}
-     <img
-      src="https://res.cloudinary.com/elpawl-llc/image/upload/v1662156689/gfm_hllgaz.png"
-      className="logo"
-      alt="logo"
-     />
-    </Link>
+
     <div className="nav-header">
      <PersonIcon style={{ color: 'white', cursor: 'pointer' }}></PersonIcon>
      <div>

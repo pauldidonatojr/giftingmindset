@@ -23,6 +23,12 @@ function App() {
    <Routes>
     <Route path="/" element={<HomePage />}></Route>
    </Routes>
+   <Routes>
+    <Route index element={<ListUser />} />
+    <Route path="user/create" element={<CreateUser />} />
+    <Route path="user/view" element={<ListUser />} />
+    <Route path="user/view/:id" element={<EditUser />} />
+   </Routes>
    <Footer2 />
   </BrowserRouter>
  )
