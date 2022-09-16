@@ -1,35 +1,37 @@
-import {
- BrowserRouter,
- Routes, // instead of "Switch"
- Route,
-} from 'react-router-dom'
-import {
- Navbar,
- Footer,
- Footer2,
- Tabs,
- CreateUser,
- ListUser,
- UpdateUser,
- EditUser,
-} from './components/index'
-import { HomePage } from './pages/index'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
+import { Landing, Error, Register, ProtectedRoute } from './pages'
+import 'react-toastify/dist/ReactToastify.css'
+import {
+ Profile,
+ AddJob,
+ AllJobs,
+ Stats,
+ SharedLayout,
+} from './pages/dashboard'
 function App() {
  return (
   <BrowserRouter>
-   <Navbar />
-   <Tabs />
    <Routes>
-    <Route path="/" element={<HomePage />}></Route>
+    <Route
+     path="/"
+     element={
+      <ProtectedRoute>
+       <SharedLayout />
+      </ProtectedRoute>
+     }
+    >
+     <Route index element={<Stats />} />
+     <Route path="all-jobs" element={<AllJobs />} />
+     <Route path="add-job" element={<AddJob />} />
+     <Route path="profile" element={<Profile />} />
+    </Route>
+    <Route path="landing" element={<Landing />} />
+    <Route path="register" element={<Register />} />
+    <Route path="*" element={<Error />} />
    </Routes>
-   <Routes>
-    <Route index element={<ListUser />} />
-    <Route path="user/create" element={<CreateUser />} />
-    <Route path="user/view" element={<ListUser />} />
-    <Route path="user/view/:id" element={<EditUser />} />
-   </Routes>
-   <Footer2 />
+   <ToastContainer position="top-center" />
   </BrowserRouter>
  )
 }

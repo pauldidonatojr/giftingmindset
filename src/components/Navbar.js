@@ -1,110 +1,61 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from '@mui/material/Button'
-import styled from 'styled-components'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
-import PersonIcon from '@mui/icons-material/Person'
-
-
+import logo from '../assets/images/logo.PNG'
+import { FaBars } from 'react-icons/fa'
+import { useGlobalContext } from '../utils/context'
 const Navbar = () => {
- var navStatus = false
- var navButton
-
- function navClicked() {
-  if (navStatus == false) {
-   console.log('hey')
-   navStatus = true
-  } else {
-   navStatus = false
-  }
- }
-
+ const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext()
  return (
-  <Wrapper>
+  <nav className="nav">
    <div className="nav-center">
-
     <div className="nav-header">
-     <PersonIcon style={{ color: 'white', cursor: 'pointer' }}></PersonIcon>
-     <div>
-      {navButton ? (
-       <ArrowDropUpIcon
-        style={{ marginLeft: '20px', color: 'white', cursor: 'pointer' }}
-        onClick={navClicked}
-       ></ArrowDropUpIcon>
-      ) : (
-       <ArrowDropDownIcon
-        style={{ marginLeft: '20px', color: 'white', cursor: 'pointer' }}
-        onClick={navClicked}
-       ></ArrowDropDownIcon>
-      )}
-     </div>
+     <Link to="/">
+      <img
+       src={logo}
+       className="nav-logo"
+       alt="stripe"
+       style={{
+        height: '3rem',
+        marginTop: '0.5rem',
+        width: '7rem',
+        borderRadius: '1rem',
+       }}
+      />
+     </Link>
+     <button className="btn toggle-btn" onClick={openSidebar}>
+      <FaBars />
+     </button>
     </div>
+    <ul className="nav-links">
+     <li>
+      <Link to="/">
+       {' '}
+       <button className="link-btn">About</button>
+      </Link>
+     </li>
+     <li>
+      <Link to="/">
+       <button className="link-btn">Team</button>
+      </Link>
+     </li>
+     <li>
+      <Link to="/">
+       <button className="link-btn">Process</button>
+      </Link>
+     </li>
+     <li>
+      <Link to="/">
+       <button className="link-btn">Contact</button>
+      </Link>
+     </li>
+    </ul>
+
+    <Link to="/register">
+     <button className="btn signin-btn">Sign In</button>
+    </Link>
    </div>
-  </Wrapper>
+  </nav>
  )
 }
-
-const Wrapper = styled.nav`
- background: var(--clr-black);
- box-shadow: var(--light-shadow);
-
- .nav-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
- }
- .nav-toggle {
-  font-size: 1.5rem;
-  color: var(--clr-white);
-  background: transparent;
-  border-color: transparent;
-  transition: var(--transition);
-  cursor: pointer;
- }
- .nav-toggle:hover {
-  color: var(--clr-primary-5);
-  transform: rotate(90deg);
- }
- .logo {
-  height: 45px;
-  width: 125px;
- }
-
- @media screen and (min-width: 800px) {
-  .nav-center {
-   max-width: 100%;
-   margin: 0 auto;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   padding: 1rem;
-  }
-  .nav-header {
-   padding: 0;
-  }
-  .nav-toggle {
-   display: none;
-  }
- }
-
- @media screen and (max-width: 600px) {
-  .nav-center {
-   max-width: 100%;
-   margin: 0 auto;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   padding: 1rem;
-  }
-  .nav-header {
-   padding: 0;
-  }
-  .nav-toggle {
-   display: none;
-  }
- }
-`
 
 export default Navbar
