@@ -33,7 +33,7 @@ function Register() {
       return;
     }
     if (isMember) {
-      dispatch(loginUser({ email: email, password: password }));
+      dispatch(loginUser({ type:'AffiliateLogin', username: email, password: password }));
       return;
     }
     dispatch(registerUser({ name, email, password }));
@@ -44,9 +44,7 @@ function Register() {
   };
   useEffect(() => {
     if (user) {
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
+      navigate('/');
     }
   }, [user]);
   return (
@@ -65,7 +63,7 @@ function Register() {
         )}
         {/* email field */}
         <FormRow
-          type='email'
+          type='text'
           name='email'
           value={values.email}
           handleChange={handleChange}

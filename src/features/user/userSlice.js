@@ -28,7 +28,7 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (user, thunkAPI) => {
-    return loginUserThunk('/auth/login', user, thunkAPI);
+    return loginUserThunk('https://thegiftingmindset.com/includes/react_auth.php', user, thunkAPI);
   }
 );
 
@@ -74,12 +74,21 @@ const userSlice = createSlice({
       state.isLoading = true;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      const { user } = payload;
-      state.isLoading = false;
-      state.user = user;
-      addUserToLocalStorage(user);
+      if(payload.success===true){
+        const { user } = payload;
+        console.log(payload);
+        console.log(payload.msg);
+        state.isLoading = false;
+        state.user = user;
+        addUserToLocalStorage(user);
+        toast.success(payload.msg);
+        
+      }
+      else{
+        state.isLoading = false;
+        toast.error(payload.msg);
+      }
 
-      toast.success(`Welcome Back ${user.name}`);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
