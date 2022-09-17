@@ -510,7 +510,89 @@ Stripe Styles
     color: var(--clr-grey-5);
     margin-right: 1rem;
 }
+/* Register CSS */
 
+.btn {
+    cursor: pointer;
+    color: var(--white);
+    background: var(--primary-500);
+    border: transparent;
+    border-radius: var(--borderRadius);
+    letter-spacing: var(--letterSpacing);
+    padding: 0.375rem 0.75rem;
+    box-shadow: var(--shadow-2);
+    transition: var(--transition);
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: var(--primary-700);
+    box-shadow: var(--shadow-3);
+}
+
+.btn-hipster {
+    color: var(--primary-500);
+    background: var(--primary-200);
+}
+
+.btn-hipster:hover {
+    color: var(--primary-200);
+    background: var(--primary-700);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-hero {
+    font-size: 1.25rem;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-danger {
+    background: var(--red-light);
+    color: var(--red-dark);
+}
+
+.btn-danger:hover {
+    background: var(--red-dark);
+    color: var(--white);
+}
+
+/* alerts */
+.alert {
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 1rem;
+    border-color: transparent;
+    border-radius: var(--borderRadius);
+    text-align: center;
+    letter-spacing: var(--letterSpacing);
+    text-transform: capitalize;
+}
+
+.alert-danger {
+    color: var(--red-dark);
+    background: var(--red-light);
+}
+
+.alert-success {
+    color: var(--green-dark);
+    background: var(--green-light);
+}
+a {
+    text-decoration: none;
+    letter-spacing: var(--letterSpacing);
+}
+
+a,
+button {
+    line-height: 1.15;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
 .form {
     width: 90vw;
     max-width: var(--fixed-width);
