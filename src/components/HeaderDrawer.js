@@ -30,6 +30,9 @@ import FactCheckIcon from '@mui/icons-material/FactCheck'
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent'
 import LogoutIcon from '@mui/icons-material/Logout'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+
 import {
  ManageUsersTreeview,
  GenealogyTreeview,
@@ -37,6 +40,10 @@ import {
  VouchersTreeview,
  SupportTreeview,
 } from './DashboardMenuTreeview'
+import { useNavigate } from 'react-router-dom'
+import { removeUserFromLocalStorage } from '../utils/localStorage'
+import GM_Logo from '../assets/images/GM_logo.png'
+
 const drawerWidth = 300
 
 const openedMixin = (theme) => ({
@@ -105,6 +112,15 @@ const Drawer = styled(MuiDrawer, {
 }))
 
 const HeaderDrawer = () => {
+ const { user, isLoading } = useSelector((store) => store.user)
+ const navigate = useNavigate()
+
+ const handleLogout = () => {
+  removeUserFromLocalStorage()
+  if (user) {
+   navigate('/landing')
+  }
+ }
  const theme = useTheme()
  const [open, setOpen] = React.useState(false)
  const [anchorEl, setAnchorEl] = React.useState(null)
@@ -130,6 +146,16 @@ const HeaderDrawer = () => {
    <CssBaseline />
    <AppBar position="fixed" open={open}>
     <Toolbar>
+     <Box
+      component="img"
+      sx={{
+       height: 40,
+       margin: 1,
+       borderRadius: 1,
+      }}
+      alt="Your logo."
+      src={GM_Logo}
+     />
      <IconButton
       color="inherit"
       aria-label="open drawer"
@@ -198,6 +224,12 @@ const HeaderDrawer = () => {
      ].map((text, index) => (
       <ListItem key={text} disablePadding sx={{ display: 'block' }}>
        <ListItemButton
+        onClick={() => {
+         if (index == 8) {
+          console.log('Logout')
+          return handleLogout()
+         }
+        }}
         sx={{
          minHeight: 48,
          justifyContent: open ? 'initial' : 'center',
