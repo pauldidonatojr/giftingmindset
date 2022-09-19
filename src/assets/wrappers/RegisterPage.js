@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const Wrapper = styled.section`
  display: grid;
  align-items: center;
+ 
  .logo {
   display: block;
   margin: 0 auto;
@@ -22,7 +23,14 @@ const Wrapper = styled.section`
   text-align: center;
  }
  .btn {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 150px;
   margin-top: 1rem;
+  margin-left: 3rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
  }
  .member-btn {
   background: transparent;

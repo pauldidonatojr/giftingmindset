@@ -17,6 +17,7 @@ import Logo from './Logo'
 import SearchContainer from './SearchContainer'
 import SmallSidebar from './SmallSidebar'
 import StatsContainer from './StatsContainer'
+import ParticlesJS from './three/ParticlesJS';
 
 export {
  Sidebar,
@@ -30,6 +31,7 @@ export {
  Hero,
  Logo,
  FormRow,
+ ParticlesJS,
 
  SmallSidebar,
  BigSidebar,

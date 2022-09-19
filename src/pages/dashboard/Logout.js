@@ -5,8 +5,7 @@ import { removeUserFromLocalStorage } from '../../utils/localStorage';
 
 const Logout = () => {
 
-  removeUserFromLocalStorage();
-
+removeUserFromLocalStorage();
 const { user, isLoading } = useSelector((store) => store.user);
 const navigate = useNavigate();
 useEffect(() => {

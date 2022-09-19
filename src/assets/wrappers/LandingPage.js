@@ -9,6 +9,10 @@ const Wrapper = styled.main`
     display: flex;
     align-items: center;
   }
+  .particles{
+    position: absolute;
+    z-index: -10;
+  }
   .page {
     min-height: calc(100vh - var(--nav-height));
     display: grid;

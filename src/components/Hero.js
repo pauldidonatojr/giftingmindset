@@ -4,7 +4,7 @@ import { useGlobalContext } from '../utils/context'
 const Hero = () => {
  const { closeSubmenu } = useGlobalContext()
  return (
-  <section className="hero">
+  <section style={{marginTop: "0px"}} className="hero">
    <div className="hero-center">
     <article className="hero-info">
      <h1> The Gifting Mindset</h1>
