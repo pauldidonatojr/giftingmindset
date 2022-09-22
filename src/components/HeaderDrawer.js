@@ -31,8 +31,6 @@ import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
-
 import {
  ManageUsersTreeview,
  GenealogyTreeview,
@@ -43,7 +41,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { removeUserFromLocalStorage } from '../utils/localStorage'
 import GM_Logo from '../assets/images/GM_logo.png'
-
+import { useState, useEffect } from 'react'
 const drawerWidth = 300
 
 const openedMixin = (theme) => ({
@@ -122,8 +120,13 @@ const HeaderDrawer = () => {
   }
  }
  const theme = useTheme()
- const [open, setOpen] = React.useState(false)
- const [anchorEl, setAnchorEl] = React.useState(null)
+ const [open, setOpen] = useState(false)
+ const [anchorEl, setAnchorEl] = useState(null)
+ const [usersExpanded, setUsersExpanded] = useState([])
+ const [geneExpanded, setGeneExpanded] = useState([])
+ const [settingExpanded, setSettingExpanded] = useState([])
+ const [vouchExpanded, setVouchExpanded] = useState([])
+ const [suppExpanded, setSuppExpanded] = useState([])
 
  const handleMenu = (event) => {
   setAnchorEl(event.currentTarget)
@@ -139,35 +142,41 @@ const HeaderDrawer = () => {
 
  const handleDrawerClose = () => {
   setOpen(false)
+  setUsersExpanded([])
+  setGeneExpanded([])
+  setSettingExpanded([])
+  setVouchExpanded([])
+  setSuppExpanded([])
  }
 
  return (
-  <Box sx={{ display: 'flex' }}>
-   <CssBaseline />
+  <Box>
    <AppBar position="fixed" open={open}>
-    <Toolbar>
-     <Box
-      component="img"
-      sx={{
-       height: 40,
-       margin: 1,
-       borderRadius: 1,
-      }}
-      alt="Your logo."
-      src={GM_Logo}
-     />
-     <IconButton
-      color="inherit"
-      aria-label="open drawer"
-      onClick={handleDrawerOpen}
-      edge="start"
-      sx={{
-       marginRight: 5,
-       ...(open && { display: 'none' }),
-      }}
-     >
-      <MenuIcon />
-     </IconButton>
+    <Toolbar style={{ justifyContent: 'space-between' }}>
+     <div style={{ display: 'flex' }}>
+      <IconButton
+       color="inherit"
+       aria-label="open drawer"
+       onClick={handleDrawerOpen}
+       edge="start"
+       sx={{
+        marginRight: 5,
+        ...(open && { display: 'none' }),
+       }}
+      >
+       <MenuIcon />
+      </IconButton>
+      <Box
+       component="img"
+       style={{
+        height: 40,
+        margin: 5,
+        borderRadius: 5,
+       }}
+       alt="Your logo."
+       src={GM_Logo}
+      />
+     </div>
      <Typography variant="h6" noWrap component="div">
       Admin
      </Typography>
@@ -213,21 +222,46 @@ const HeaderDrawer = () => {
     <List>
      {[
       'Dashboard',
-      <ManageUsersTreeview />,
-      <GenealogyTreeview />,
+      <ManageUsersTreeview usersExpanded={usersExpanded} />,
+      <GenealogyTreeview geneExpanded={geneExpanded} />,
       'Gift History',
-      <SettingsTreeview />,
+      <SettingsTreeview settingExpanded={settingExpanded} />,
       'Completed Boards',
-      <VouchersTreeview />,
-      <SupportTreeview />,
+      <VouchersTreeview vouchExpanded={vouchExpanded} />,
+      <SupportTreeview suppExpanded={suppExpanded} />,
       'Logout',
      ].map((text, index) => (
-      <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+      <ListItem key={index} disablePadding sx={{ display: 'block' }}>
        <ListItemButton
         onClick={() => {
          if (index == 8) {
           console.log('Logout')
           return handleLogout()
+         } else if (index == 1) {
+          usersExpanded.length == 0
+           ? setUsersExpanded(['1'])
+           : setUsersExpanded([])
+          handleDrawerOpen()
+         } else if (index == 2) {
+          geneExpanded.length == 0
+           ? setGeneExpanded(['1'])
+           : setGeneExpanded([])
+          handleDrawerOpen()
+         } else if (index == 4) {
+          settingExpanded.length == 0
+           ? setSettingExpanded(['1'])
+           : setSettingExpanded([])
+          handleDrawerOpen()
+         } else if (index == 6) {
+          vouchExpanded.length == 0
+           ? setVouchExpanded(['1'])
+           : setVouchExpanded([])
+          handleDrawerOpen()
+         } else if (index == 7) {
+          suppExpanded.length == 0
+           ? setSuppExpanded(['1'])
+           : setSuppExpanded([])
+          handleDrawerOpen()
          }
         }}
         sx={{

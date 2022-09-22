@@ -7,10 +7,11 @@ const MainBackground = styled.div`
  background-color: #1e2026;
  flex-direction: row;
  flex-wrap: wrap;
- /* align-items: center; */
+ align-items: center;
  justify-content: center;
  width: 100%;
  height: 100vh;
+ align-content: flex-start;
  /* padding-left: 3%; */
  padding-top: 70px;
  gap: 10px;

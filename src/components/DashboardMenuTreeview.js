@@ -4,6 +4,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import TreeItem from '@mui/lab/TreeItem'
 import styled from 'styled-components'
+import { useEffect } from 'react'
 
 const MuiTreeitem = styled(TreeItem)`
  label {
@@ -13,7 +14,7 @@ const MuiTreeitem = styled(TreeItem)`
  }
 `
 
-export const ManageUsersTreeview = () => {
+export const ManageUsersTreeview = ({ usersExpanded }) => {
  const [selected, setSelected] = React.useState([])
 
  const handleSelect = (event, nodeIds) => {
@@ -22,29 +23,32 @@ export const ManageUsersTreeview = () => {
  return (
   <TreeView
    aria-label="file system navigator"
+   expanded={usersExpanded}
    selected={null}
    defaultCollapseIcon={<ExpandMoreIcon />}
    defaultExpandIcon={<ChevronRightIcon />}
-   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <MuiTreeitem nodeId="1" label="Manage Users">
-    <MuiTreeitem nodeId="2" label="All Members" />
-    <MuiTreeitem nodeId="3" label="Activate Request" />
-    <MuiTreeitem nodeId="4" label="Inactive Members" />
-    <MuiTreeitem nodeId="5" label="Blocked Members" />
+    <MuiTreeitem nodeId="2" label="Add User" />
+    <MuiTreeitem nodeId="3" label="All Members" />
+    <MuiTreeitem nodeId="4" label="Activate Request" />
+    <MuiTreeitem nodeId="5" label="Inactive Members" />
+    <MuiTreeitem nodeId="6" label="Blocked Members" />
    </MuiTreeitem>
   </TreeView>
  )
 }
 
-export const GenealogyTreeview = () => {
+export const GenealogyTreeview = ({ geneExpanded }) => {
  return (
   <TreeView
+   expanded={geneExpanded}
    selected={null}
    aria-label="file system navigator"
    defaultCollapseIcon={<ExpandMoreIcon />}
    defaultExpandIcon={<ChevronRightIcon />}
-   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <TreeItem nodeId="1" label="Genealogy">
     <TreeItem nodeId="2" label="Direct team" />
@@ -53,14 +57,15 @@ export const GenealogyTreeview = () => {
   </TreeView>
  )
 }
-export const SettingsTreeview = () => {
+export const SettingsTreeview = ({ settingExpanded }) => {
  return (
   <TreeView
+   expanded={settingExpanded}
    selected={null}
    aria-label="file system navigator"
    defaultCollapseIcon={<ExpandMoreIcon />}
    defaultExpandIcon={<ChevronRightIcon />}
-   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <TreeItem nodeId="1" label="Settings">
     <TreeItem nodeId="2" label="Logo" />
@@ -79,14 +84,15 @@ export const SettingsTreeview = () => {
  )
 }
 
-export const VouchersTreeview = () => {
+export const VouchersTreeview = ({ vouchExpanded }) => {
  return (
   <TreeView
+   expanded={vouchExpanded}
    selected={null}
    aria-label="file system navigator"
    defaultCollapseIcon={<ExpandMoreIcon />}
    defaultExpandIcon={<ChevronRightIcon />}
-   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <TreeItem nodeId="1" label="Vouchers">
     <TreeItem nodeId="2" label="Pending Vouchers" />
@@ -95,14 +101,15 @@ export const VouchersTreeview = () => {
   </TreeView>
  )
 }
-export const SupportTreeview = () => {
+export const SupportTreeview = ({ suppExpanded }) => {
  return (
   <TreeView
+   expanded={suppExpanded}
    selected={null}
    aria-label="file system navigator"
    defaultCollapseIcon={<ExpandMoreIcon />}
    defaultExpandIcon={<ChevronRightIcon />}
-   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <TreeItem nodeId="1" label="Support">
     <TreeItem nodeId="2" label="Pending Queries" />
