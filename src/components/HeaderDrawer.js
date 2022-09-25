@@ -42,6 +42,7 @@ import { useNavigate } from 'react-router-dom'
 import { removeUserFromLocalStorage } from '../utils/localStorage'
 import GM_Logo from '../assets/images/GM_logo.png'
 import { useState, useEffect } from 'react'
+import { theme } from '../Theme'
 const drawerWidth = 300
 
 const openedMixin = (theme) => ({
@@ -77,6 +78,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const AppBar = styled(MuiAppBar, {
  shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
+ backgroundColor: theme.palette.light_black,
  zIndex: theme.zIndex.drawer + 1,
  transition: theme.transitions.create(['width', 'margin'], {
   easing: theme.transitions.easing.sharp,
@@ -119,7 +121,6 @@ const HeaderDrawer = () => {
    navigate('/landing')
   }
  }
- const theme = useTheme()
  const [open, setOpen] = useState(false)
  const [anchorEl, setAnchorEl] = useState(null)
  const [usersExpanded, setUsersExpanded] = useState([])

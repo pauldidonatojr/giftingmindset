@@ -4,7 +4,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import TreeItem from '@mui/lab/TreeItem'
 import styled from 'styled-components'
-import { useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const MuiTreeitem = styled(TreeItem)`
  label {
@@ -15,7 +16,9 @@ const MuiTreeitem = styled(TreeItem)`
 `
 
 export const ManageUsersTreeview = ({ usersExpanded }) => {
- const [selected, setSelected] = React.useState([])
+ let navigate = useNavigate()
+
+ const [selected, setSelected] = useState([])
 
  const handleSelect = (event, nodeIds) => {
   setSelected(nodeIds)
@@ -30,9 +33,21 @@ export const ManageUsersTreeview = ({ usersExpanded }) => {
    sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <MuiTreeitem nodeId="1" label="Manage Users">
-    <MuiTreeitem nodeId="2" label="Add User" />
-    <MuiTreeitem nodeId="3" label="All Members" />
-    <MuiTreeitem nodeId="4" label="Activate Request" />
+    <MuiTreeitem
+     nodeId="2"
+     label="Add User"
+     onClick={() => navigate('/admin/adduser')}
+    />
+    <MuiTreeitem
+     onClick={() => navigate('/admin/allmembers')}
+     nodeId="3"
+     label="All Members"
+    />
+    <MuiTreeitem
+     onClick={() => navigate('/admin/activaterequest')}
+     nodeId="4"
+     label="Activate Request"
+    />
     <MuiTreeitem nodeId="5" label="Inactive Members" />
     <MuiTreeitem nodeId="6" label="Blocked Members" />
    </MuiTreeitem>
@@ -41,6 +56,8 @@ export const ManageUsersTreeview = ({ usersExpanded }) => {
 }
 
 export const GenealogyTreeview = ({ geneExpanded }) => {
+ let navigate = useNavigate()
+
  return (
   <TreeView
    expanded={geneExpanded}
@@ -51,8 +68,17 @@ export const GenealogyTreeview = ({ geneExpanded }) => {
    sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <TreeItem nodeId="1" label="Genealogy">
-    <TreeItem nodeId="2" label="Direct team" />
-    <TreeItem nodeId="3" label="Downline Team" />
+    <TreeItem
+     onClick={() => navigate('/admin/genealogytree')}
+     nodeId="2"
+     label="Genealogy tree"
+    />
+    <TreeItem
+     onClick={() => navigate('/admin/directteam')}
+     nodeId="3"
+     label="Direct team"
+    />
+    <TreeItem nodeId="4" label="Downline Team" />
    </TreeItem>
   </TreeView>
  )
