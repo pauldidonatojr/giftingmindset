@@ -1,3 +1,5 @@
+import { AssistantDirection } from '@mui/icons-material'
+
 export const FamilyTreeData = [
  {
   name: 'Root',
@@ -8,7 +10,6 @@ export const FamilyTreeData = [
     name: 'Child 1',
     gender: 'Female',
     id: 'GM123456789',
-
     children: [
      {
       name: 'Grand Child',

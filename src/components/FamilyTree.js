@@ -6,12 +6,18 @@ import styled from 'styled-components'
 import { Typography } from '@mui/material'
 import Male from '../assets/images/MaleTree.png'
 import Female from '../assets/images/FemaleTree.png'
+import { useEffect } from 'react'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const NodeUi = styled.div`
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
+`
+const LoaderContainer = styled.div`
+ display: flex;
+ align-self: center;
 `
 const NodeImg = styled.img`
  height: 100px;
@@ -21,13 +27,17 @@ const NodeImg = styled.img`
  }};
  border-radius: 50px;
 `
+const nodeHistoryArray = []
 
 const FamilyTree = ({ data }) => {
- const nodeHistoryArray = []
- const [treeData, setTreeData] = useState(data)
+ const [treeNodes, setTreeNodes] = useState(data)
+
+ useEffect(() => {
+  setTreeNodes(data)
+ }, [data])
 
  const handleClick = (nodeData) => {
-  setTreeData([nodeData])
+  setTreeNodes([nodeData])
   nodeHistoryArray.push(nodeData)
  }
 
@@ -35,21 +45,26 @@ const FamilyTree = ({ data }) => {
   nodeHistoryArray.pop()
   console.log(nodeHistoryArray)
   if (nodeHistoryArray.length > 0) {
-   setTreeData([nodeHistoryArray[nodeHistoryArray.length - 1]])
+   setTreeNodes([nodeHistoryArray[nodeHistoryArray.length - 1]])
   } else {
-   setTreeData(data)
+   setTreeNodes(data)
   }
  }
 
- return (
+ return treeNodes !== null ? (
   <>
    <ArrowBackIcon
-    sx={{ color: 'white', fontSize: '45px' }}
+    sx={{
+     color: 'white',
+     fontSize: '45px',
+     marginLeft: '80px',
+     cursor: 'pointer',
+    }}
     onClick={() => {
      popNodeFromArray()
     }}
    />
-   {treeData.map((element) => {
+   {treeNodes.map((element) => {
     return (
      <Tree
       lineWidth={'2px'}
@@ -61,7 +76,7 @@ const FamilyTree = ({ data }) => {
          handleClick(element)
         }}
        >
-        {element.gender === 'Male' ? (
+        {element.gender == 'male' ? (
          <NodeImg parent src={Male} />
         ) : (
          <NodeImg parent src={Female} />
@@ -81,7 +96,7 @@ const FamilyTree = ({ data }) => {
              handleClick(childElement)
             }}
            >
-            {childElement.gender === 'Male' ? (
+            {childElement.gender == 'male' ? (
              <NodeImg src={Male} />
             ) : (
              <NodeImg src={Female} />
@@ -101,7 +116,7 @@ const FamilyTree = ({ data }) => {
                  handleClick(grandChildElement)
                 }}
                >
-                {grandChildElement.gender === 'Male' ? (
+                {grandChildElement.gender == 'male' ? (
                  <NodeImg src={Male} />
                 ) : (
                  <NodeImg src={Female} />
@@ -124,6 +139,10 @@ const FamilyTree = ({ data }) => {
     )
    })}
   </>
+ ) : (
+  <LoaderContainer>
+   <CircularProgress sx={{ color: 'white' }} />
+  </LoaderContainer>
  )
 }
 export default FamilyTree
