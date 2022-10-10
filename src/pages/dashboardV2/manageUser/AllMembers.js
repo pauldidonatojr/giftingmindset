@@ -10,9 +10,11 @@ import { useMemo } from 'react'
 import EditIcon from '@mui/icons-material/Edit'
 import KeyIcon from '@mui/icons-material/Key'
 import BlockIcon from '@mui/icons-material/Block'
-import { AllMembersData } from '../../../utils/DummyData'
 import { SelectorButtonRow } from '../../../components/StyledComponents'
 import Table from '../../../components/Table'
+import { useEffect, useState } from 'react'
+import { getAllMembersData } from '../../../utils/FetchAllMembersData.mjs'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const ContentContainer = styled.div`
  display: flex;
@@ -44,19 +46,47 @@ const TableButtonContainer = styled.div`
  justify-content: center;
  gap: 10px;
 `
-
+const LoaderContainer = styled.div`
+ margin: 100px;
+ display: flex;
+ align-self: center;
+`
 const AllMembers = () => {
- const data = useMemo(() => AllMembersData, [])
- const columns = useMemo(
-  () => [
-   { Header: 'ID', accessor: 'id' },
-   { Header: 'User ID', accessor: 'userid' },
-   { Header: 'Sponser Name(ID)', accessor: 'sponsername' },
-   { Header: 'Password', accessor: 'password' },
-   { Header: 'Plan', accessor: 'plan' },
-   { Header: 'Mobile', accessor: 'mobile' },
-  ],
-  []
+ const [AllMembersData, setAllMembersData] = useState('Loading')
+ useEffect(() => {
+  const fetchTableData = async () => {
+   const MembersData = await getAllMembersData()
+   setAllMembersData(MembersData)
+  }
+  fetchTableData()
+ }, [])
+ //  console.log('All members data :', AllMembersData)
+ const data = useMemo(() => AllMembersData, [AllMembersData])
+ const columns = useMemo(() =>
+  AllMembersData[0]
+   ? Object.keys(AllMembersData[0]).map((key) => {
+      if (key == 'id') {
+       return {
+        Header: 'ID',
+        accessor: key,
+       }
+      } else if (key == 'name') {
+       return { Header: 'User ID', accessor: key }
+      } else if (key == 'flname') {
+       return { Header: 'FL Name', accessor: key }
+      } else if (key == 'sponsername') {
+       return { Header: 'Sponser Name(ID)', accessor: key }
+      } else if (key == 'pwd') {
+       return { Header: 'Password', accessor: key }
+      } else if (key == 'plan') {
+       return { Header: 'Plan', accessor: key }
+      } else if (key == 'mob') {
+       return { Header: 'Mobile', accessor: key }
+      } else if (key == 'country') {
+       return { Header: 'Country', accessor: key }
+      }
+     })
+   : []
  )
  const tableHooks = (hooks) => {
   hooks.visibleColumns.push((columns) => [
@@ -108,31 +138,43 @@ const AllMembers = () => {
 
  return (
   <MainBackground>
-   <HeaderRow heading={'Users'} />
-   {/* <Divider  light /> */}
-   <ContentContainer>
-    <Typography sx={{ marginY: '15px' }} variant="dashboard_subheading">
-     SELECT BLOCKED USER
-    </Typography>
-    <Divider light />
-    <SelectorButtonRow>
-     <BlockedUserDropdown />
-     <SingleButton ButtonText={'Filter'} />
-    </SelectorButtonRow>
-    <Typography sx={{ marginY: '15px' }} variant="dashboard_subheading">
-     Users
-    </Typography>
-    <Divider light />
-    <TableContainer>
-     <RowContainer>
-      <ButtonsContainer>
-       <SingleButton ButtonText={'CSV'} />
-       <SingleButton ButtonText={'Excel'} />
-      </ButtonsContainer>
-     </RowContainer>
-     <Table customColumn={columns} customData={data} tableHooks={tableHooks} />
-    </TableContainer>
-   </ContentContainer>
+   {AllMembersData === 'Loading' ? (
+    <LoaderContainer>
+     <CircularProgress sx={{ color: 'white' }} />
+    </LoaderContainer>
+   ) : (
+    <>
+     <HeaderRow heading={'Users'} />
+     {/* <Divider  light /> */}
+     <ContentContainer>
+      <Typography sx={{ marginY: '15px' }} variant="dashboard_subheading">
+       SELECT BLOCKED USER
+      </Typography>
+      <Divider light />
+      <SelectorButtonRow>
+       <BlockedUserDropdown />
+       <SingleButton ButtonText={'Filter'} />
+      </SelectorButtonRow>
+      <Typography sx={{ marginY: '15px' }} variant="dashboard_subheading">
+       Users
+      </Typography>
+      <Divider light />
+      <TableContainer>
+       <RowContainer>
+        <ButtonsContainer>
+         <SingleButton ButtonText={'CSV'} />
+         <SingleButton ButtonText={'Excel'} />
+        </ButtonsContainer>
+       </RowContainer>
+       <Table
+        customColumn={columns}
+        customData={data}
+        tableHooks={tableHooks}
+       />
+      </TableContainer>
+     </ContentContainer>
+    </>
+   )}
   </MainBackground>
  )
 }
