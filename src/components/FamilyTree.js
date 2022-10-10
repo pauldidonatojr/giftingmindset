@@ -8,6 +8,8 @@ import Male from '../assets/images/MaleTree.png'
 import Female from '../assets/images/FemaleTree.png'
 import { useEffect } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
+import Alert from '@mui/material/Alert'
+import SingleButton from './SingleButton'
 
 const NodeUi = styled.div`
  display: flex;
@@ -61,7 +63,24 @@ const FamilyTree = ({ data, setNodeId }) => {
   // }
  }
 
- return treeNodes !== null ? (
+ return treeNodes === 'loading' ? (
+  <LoaderContainer>
+   <CircularProgress sx={{ color: 'white' }} />
+  </LoaderContainer>
+ ) : treeNodes == null ? (
+  <>
+   <Alert style={{ margin: '100px' }} severity="error">
+    <strong>Error : </strong>
+    No data to show!
+   </Alert>
+   <SingleButton
+    ButtonText={'Reset data'}
+    onClick={() => {
+     setNodeId('1')
+    }}
+   />
+  </>
+ ) : (
   <>
    <ArrowBackIcon
     sx={{
@@ -149,10 +168,6 @@ const FamilyTree = ({ data, setNodeId }) => {
     )
    })}
   </>
- ) : (
-  <LoaderContainer>
-   <CircularProgress sx={{ color: 'white' }} />
-  </LoaderContainer>
  )
 }
 export default FamilyTree

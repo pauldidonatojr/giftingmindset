@@ -2,13 +2,11 @@ import axios from 'axios'
 
 export const getFamTreeData = async (id) => {
  try {
-  let res = await axios.post(
-   'https://thegiftingmindset.com/includes/react_auth.php',
-   {
-    type: 'admin_genetree',
+  let res = await axios.get('https://thegiftingmindset.com/includes/tree.php', {
+   params: {
     user_id: id,
-   }
-  )
+   },
+  })
   let data = res.data
   return data
  } catch (error) {

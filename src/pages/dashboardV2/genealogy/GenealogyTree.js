@@ -24,7 +24,7 @@ const FamilyTreeContainer = styled.div`
 
 const GenealogyTree = () => {
  const [nodeId, setNodeId] = useState('1')
- const [treeData, setTreeData] = useState(null)
+ const [treeData, setTreeData] = useState('loading')
  useEffect(() => {
   const fetchTreeData = async () => {
    const data = await getFamTreeData(nodeId)
