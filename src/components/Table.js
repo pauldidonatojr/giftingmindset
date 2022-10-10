@@ -47,8 +47,6 @@ const TableStyles = styled.div`
 const Table = ({ customColumn, customData, tableHooks }) => {
  const columns = customColumn
  const data = customData
- console.log('Table component Columns : ', columns)
- console.log('Table component data : ', data)
 
  const tableInstance = useTable(
   { columns, data, initialState: { pageIndex: 0 } },
