@@ -29,7 +29,7 @@ const NodeImg = styled.img`
 `
 const nodeHistoryArray = []
 
-const FamilyTree = ({ data }) => {
+const FamilyTree = ({ data, setNodeId }) => {
  const [treeNodes, setTreeNodes] = useState(data)
 
  useEffect(() => {
@@ -37,18 +37,28 @@ const FamilyTree = ({ data }) => {
  }, [data])
 
  const handleClick = (nodeData) => {
-  setTreeNodes([nodeData])
-  nodeHistoryArray.push(nodeData)
+  setNodeId(nodeData.id)
+  if (!nodeHistoryArray.includes(nodeData.id)) {
+   nodeHistoryArray.push(nodeData.id)
+  }
+  // setTreeNodes([nodeData])
+  console.log(nodeHistoryArray)
  }
 
  const popNodeFromArray = () => {
   nodeHistoryArray.pop()
   console.log(nodeHistoryArray)
   if (nodeHistoryArray.length > 0) {
-   setTreeNodes([nodeHistoryArray[nodeHistoryArray.length - 1]])
+   // console.log()
+   //  setTreeNodes([nodeHistoryArray[nodeHistoryArray.length - 1]])
+   setNodeId(nodeHistoryArray[nodeHistoryArray.length - 1])
   } else {
-   setTreeNodes(data)
+   setNodeId('1')
   }
+
+  // else {
+  //  setTreeNodes(data)
+  // }
  }
 
  return treeNodes !== null ? (
@@ -87,7 +97,7 @@ const FamilyTree = ({ data }) => {
       }
      >
       {element.children?.length &&
-       element.children.map((childElement) => {
+       element.children.slice(0, 3).map((childElement) => {
         return (
          <TreeNode
           label={
@@ -107,7 +117,7 @@ const FamilyTree = ({ data }) => {
           }
          >
           {childElement.children?.length &&
-           childElement.children.map((grandChildElement) => {
+           childElement.children.slice(0, 3).map((grandChildElement) => {
             return (
              <TreeNode
               label={

@@ -9,6 +9,7 @@ import FamilyTree from '../../../components/FamilyTree'
 import { getFamTreeData } from '../../../utils/FetchFamilyTreeData.mjs'
 import TreeSearchBar from '../../../components/TreeSearchBar'
 import { useEffect, useState } from 'react'
+import { FamilyTreeData } from '../../../utils/DummyData'
 const ContentContainer = styled.div`
  display: flex;
  flex-direction: column;
@@ -22,14 +23,16 @@ const FamilyTreeContainer = styled.div`
 `
 
 const GenealogyTree = () => {
+ const [nodeId, setNodeId] = useState('1')
  const [treeData, setTreeData] = useState(null)
  useEffect(() => {
   const fetchTreeData = async () => {
-   const data = await getFamTreeData()
+   const data = await getFamTreeData(nodeId)
    setTreeData(data)
   }
   fetchTreeData()
- }, [])
+ }, [nodeId])
+
  return (
   <MainBackground>
    <HeaderRow heading={'Downline'} />
@@ -39,7 +42,7 @@ const GenealogyTree = () => {
      <SingleButton ButtonText={'Search'} />
     </SelectorButtonRow>
     <FamilyTreeContainer>
-     <FamilyTree data={treeData} />
+     <FamilyTree data={treeData} setNodeId={setNodeId} />
     </FamilyTreeContainer>
    </ContentContainer>
   </MainBackground>
