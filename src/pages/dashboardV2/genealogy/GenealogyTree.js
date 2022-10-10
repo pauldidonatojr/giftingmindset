@@ -28,6 +28,7 @@ const GenealogyTree = () => {
  useEffect(() => {
   const fetchTreeData = async () => {
    const data = await getFamTreeData(nodeId)
+   console.log('call sent genealogy component')
    setTreeData(data)
   }
   fetchTreeData()

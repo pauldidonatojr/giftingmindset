@@ -30,37 +30,30 @@ const NodeImg = styled.img`
  border-radius: 50px;
 `
 const nodeHistoryArray = []
-
+let nodeHistoryArrayIndex = 0
 const FamilyTree = ({ data, setNodeId }) => {
  const [treeNodes, setTreeNodes] = useState(data)
-
  useEffect(() => {
   setTreeNodes(data)
+
+  nodeHistoryArrayIndex = nodeHistoryArray.length - 1
  }, [data])
 
  const handleClick = (nodeData) => {
-  setNodeId(nodeData.id)
-  if (!nodeHistoryArray.includes(nodeData.id)) {
-   nodeHistoryArray.push(nodeData.id)
+  if (nodeHistoryArray.indexOf(data[0]) === -1) {
+   setNodeId(nodeData.id)
+   nodeHistoryArray.push(data[0])
   }
-  // setTreeNodes([nodeData])
-  console.log(nodeHistoryArray)
  }
 
- const popNodeFromArray = () => {
-  nodeHistoryArray.pop()
-  console.log(nodeHistoryArray)
+ const onClickBackButton = () => {
   if (nodeHistoryArray.length > 0) {
-   // console.log()
-   //  setTreeNodes([nodeHistoryArray[nodeHistoryArray.length - 1]])
-   setNodeId(nodeHistoryArray[nodeHistoryArray.length - 1])
-  } else {
-   setNodeId('1')
+   setTreeNodes([nodeHistoryArray[nodeHistoryArrayIndex]])
+   if (nodeHistoryArrayIndex >= 1) {
+    nodeHistoryArrayIndex--
+   }
+   console.log(nodeHistoryArray[nodeHistoryArrayIndex])
   }
-
-  // else {
-  //  setTreeNodes(data)
-  // }
  }
 
  return treeNodes === 'loading' ? (
@@ -90,7 +83,7 @@ const FamilyTree = ({ data, setNodeId }) => {
      cursor: 'pointer',
     }}
     onClick={() => {
-     popNodeFromArray()
+     onClickBackButton()
     }}
    />
    {treeNodes.map((element) => {
