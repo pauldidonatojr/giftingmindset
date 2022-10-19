@@ -38,7 +38,6 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const ReviewSchema = yup.object({
- UserName: yup.string().required('Please Enter Username'),
  Email: yup.string().email().required('Please enter a valid email'),
  Password: yup.string().required('Password error'),
 })
@@ -61,18 +60,14 @@ const SignUpScreen = () => {
     <Formik
      validationSchema={ReviewSchema}
      initialValues={{
-      UserName: '',
       Email: '',
       Password: '',
      }}
      onSubmit={async (values, { resetForm }) => {
       try {
        const { user } = await Auth.signUp({
-        username: values.UserName,
+        username: values.Email,
         password: values.Password,
-        attributes: {
-         email: values.Email, // optional
-        },
        })
        setSnackBarMessage('Success')
        setOpenSnackBar(true)
@@ -96,23 +91,6 @@ const SignUpScreen = () => {
         <TextFieldContainerRowDiv>
          <TextfieldIconContainerDiv>
           <TextfieldIcon src={User_Icon} />
-         </TextfieldIconContainerDiv>
-         <InputField
-          onChange={props.handleChange('UserName')}
-          value={props.values.UserName}
-          sx={{ input: { color: 'black' } }}
-          size="small"
-          placeholder="Username"
-         />
-        </TextFieldContainerRowDiv>
-        {props.errors.UserName && props.touched.UserName ? (
-         <Error>{props.errors.UserName}</Error>
-        ) : null}
-       </TextFieldColumn>
-       <TextFieldColumn>
-        <TextFieldContainerRowDiv>
-         <TextfieldIconContainerDiv>
-          <TextfieldIcon src={Envelope_Close} />
          </TextfieldIconContainerDiv>
          <InputField
           onChange={props.handleChange('Email')}
