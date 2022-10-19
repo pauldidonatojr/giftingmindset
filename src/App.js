@@ -49,7 +49,7 @@ function App() {
      <Route path="logout" element={<Logout />} />
     </Route>
     <Route path="landing" element={<Landing />} />
-    <Route path="register" element={<SignUpScreen />} />
+    <Route path="signUp" element={<SignUpScreen />} />
     <Route path="signIn" element={<SignInScreen />} />
     <Route path="/confirmSignUp" element={<ConfirmSignUp />} />
     <Route path="/forgotpassword" element={<ForgotPasswordScreen />} />
