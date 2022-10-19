@@ -1,0 +1,28 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-giftingmindset-dev-00233-authRole",
+      "UnauthRoleArn": "arn:aws:iam::977451231611:role/amplify-giftingmindset-dev-00233-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::977451231611:role/amplify-giftingmindset-dev-00233-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-giftingmindset-dev-00233-deployment",
+      "UnauthRoleName": "amplify-giftingmindset-dev-00233-unauthRole",
+      "StackName": "amplify-giftingmindset-dev-00233",
+      "StackId": "arn:aws:cloudformation:us-east-1:977451231611:stack/amplify-giftingmindset-dev-00233/9b903020-4fe0-11ed-b488-0a547cbb11bb",
+      "AmplifyAppId": "d2zric1hugpsq8",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-giftingmindset-dev-00233-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "giftingmindset3f17775e": {}
+      },
+      "function": {
+        "giftingmindset3f17775ePostConfirmation": {
+          "GROUP": "General_Users",
+          "deploymentBucketName": "amplify-giftingmindset-dev-00233-deployment",
+          "s3Key": "amplify-builds/giftingmindset3f17775ePostConfirmation-2f616867467268785539-build.zip"
+        }
+      }
+    }
+  }
+}

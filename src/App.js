@@ -8,7 +8,13 @@ import AllMembers from './pages/dashboardV2/manageUser/AllMembers'
 import ActivateRequest from './pages/dashboardV2/manageUser/ActivatRequest'
 import GenealogyTree from './pages/dashboardV2/genealogy/GenealogyTree'
 import DirectTeam from './pages/dashboardV2/genealogy/DirectTeam'
+import SignUpScreen from './pages/SignUpScreen'
+import SignInScreen from './pages/SignInScreen'
+import ForgotPasswordSubmitScreen from './pages/ForgotPasswordSubmitScreen'
+import ForgotPasswordScreen from './pages/ForgotPasswordScreen'
+import ConfirmSignUp from './pages/ConfirmSignUp'
 import 'react-toastify/dist/ReactToastify.css'
+import { Auth, API, Storage } from 'aws-amplify'
 import { MainBackground } from './components/StyledComponents'
 import {
  Stats,
@@ -23,6 +29,9 @@ import {
  SharedLayout,
 } from './pages/dashboard'
 import HeaderDrawer from './components/HeaderDrawer'
+import awsmobile from './aws-exports'
+
+Auth.configure(awsmobile)
 
 function App() {
  return (
@@ -40,7 +49,15 @@ function App() {
      <Route path="logout" element={<Logout />} />
     </Route>
     <Route path="landing" element={<Landing />} />
-    <Route path="register" element={<Register />} />
+    <Route path="register" element={<SignUpScreen />} />
+    <Route path="signIn" element={<SignInScreen />} />
+    <Route path="/confirmSignUp" element={<ConfirmSignUp />} />
+    <Route path="/forgotpassword" element={<ForgotPasswordScreen />} />
+    <Route
+     path="/forgotpasswordsubmit"
+     element={<ForgotPasswordSubmitScreen />}
+    />
+
     <Route path="*" element={<Error />} />
     <Route path="admin/dashboardv2" element={<DashboardV2 />} />
     <Route

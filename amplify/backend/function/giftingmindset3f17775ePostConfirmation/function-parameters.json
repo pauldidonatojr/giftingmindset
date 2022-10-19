@@ -1,0 +1,18 @@
+{
+  "trigger": true,
+  "modules": [
+    "add-to-group"
+  ],
+  "parentResource": "giftingmindset3f17775e",
+  "functionName": "giftingmindset3f17775ePostConfirmation",
+  "resourceName": "giftingmindset3f17775ePostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "C:\\snapshot\\repo\\build\\node_modules\\@aws-amplify\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "triggerEventPath": "PostConfirmation.event.json",
+  "roleName": "giftingmindset3f17775ePostConfirmation",
+  "skipEdit": true,
+  "GROUP": "General_Users",
+  "enableCors": false
+}

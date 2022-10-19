@@ -8,6 +8,17 @@ export const theme = createTheme({
   dark_black: '#1B1D22',
   light_black: '#1E2026',
  },
+ login_Button: {
+  color: 'white',
+  backgroundColor: '#0099F1',
+  width: '80%',
+  fontFamily: 'Lato',
+  fontSize: 18,
+  textTransform: 'none',
+  borderRadius: 2,
+  marginTop: 20,
+  letterSpacing: 0,
+ },
 
  even_row_table: {
   backgroundColor: '#1B1D22',
@@ -37,6 +48,12 @@ export const theme = createTheme({
   fontWeight: 'bolder',
  },
  typography: {
+  clicktext_lower_blue: {
+   fontFamily: 'Lato',
+   fontSize: 14,
+   fontWeight: 600,
+   color: '#005D9E',
+  },
   tree_parent: {
    color: 'white',
    fontSize: '20px',
@@ -58,3 +75,4 @@ export const theme = createTheme({
   },
  },
 })
+export default theme
