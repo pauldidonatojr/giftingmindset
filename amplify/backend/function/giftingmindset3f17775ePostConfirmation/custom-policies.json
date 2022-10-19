@@ -1,6 +1,12 @@
 [
   {
-    "Action": [],
-    "Resource": []
+    "Action": [
+      "cognito-idp:AdminAddUserToGroup",
+      "cognito-idp:CreateGroup",
+      "cognito-idp:GetGroup"
+    ],
+    "Resource": [
+      "arn:aws:iam::977451231611:role/amplify-giftingmindset-dev-00233-authRole"
+    ]
   }
 ]

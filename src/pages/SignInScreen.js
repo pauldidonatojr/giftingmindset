@@ -59,7 +59,7 @@ const SignInScreen = ({ setIsLoggedIn }) => {
       console.log('OnSubmit click', values)
       try {
        const user = await Auth.signIn(values.UserName, values.Password)
-       setIsLoggedIn(true)
+       //  setIsLoggedIn(true)
        setSnackBarMessage('Success')
        setOpenSnackBar(true)
        setSeverity('success')
