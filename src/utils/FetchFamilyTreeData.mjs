@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getFamTreeData = async (id) => {
  try {
-  let res = await axios.get('https://thegiftingmindset.com/includes/tree.php', {
+  let res = await axios.get('https://thegiftingmindset.com/includes/react_auth.php', {
    params: {
     user_id: id,
    },

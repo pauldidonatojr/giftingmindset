@@ -11,6 +11,7 @@ const FormRow = ({ type, name, value, handleChange, labelText }) => {
         value={value}
         onChange={handleChange}
         className='form-input'
+        style={{ 'padding': '5px', 'backgroundColor': '#D3D3D3', 'borderRadius': '5px'}} 
       />
     </div>
   );

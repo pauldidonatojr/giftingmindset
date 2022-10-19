@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterPage';
+import gift from '../assets/images/giftlogo.svg'
+import { useGlobalContext } from '../utils/context'
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
@@ -49,10 +51,14 @@ function Register() {
   }, [user]);
   return (
     <Wrapper className='full-page'>
+    {/*<img style={{'position':'absolute'}} src={gift} className="p-image" alt="phone" /><img style={{'position':'absolute'}} src={gift} className="phone-img" alt="phone" />*/}
       <form className='form' onSubmit={onSubmit}>
         <Logo />
-        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+        
+       
         {/* name field */}
+        <fieldset>
+        <legend>{values.isMember ? 'Login' : 'Sign Up!'}</legend>
         {!values.isMember && (
           <FormRow
             type='text'
@@ -75,12 +81,15 @@ function Register() {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type='submit' className='btn btn-block' disabled={isLoading}>
-          {isLoading ? 'loading...' : 'submit'}
+
+        </fieldset>
+        
+        <button type='submit' className='button' disabled={isLoading}>
+          {isLoading ? 'loading...' : 'Submit'}
         </button>
         <button
           type='button'
-          className='btn btn-block btn-hipster'
+          className='button'
           disabled={isLoading}
           onClick={() =>
             dispatch(
@@ -88,14 +97,15 @@ function Register() {
             )
           }
         >
-          {isLoading ? 'loading...' : 'demo app'}
+          {isLoading ? 'loading...' : 'Demo App'}
         </button>
         <p>
-          {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+          {values.isMember ? 'Not a member yet? ' : 'Already a member? '}
           <button type='button' onClick={toggleMember} className='member-btn'>
             {values.isMember ? 'Register' : 'Login'}
           </button>
         </p>
+        
       </form>
     </Wrapper>
   );
