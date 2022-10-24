@@ -14,14 +14,7 @@
     },
     "categories": {
       "auth": {
-        "giftingmindset3f17775e": {}
-      },
-      "function": {
-        "giftingmindset3f17775ePostConfirmation": {
-          "GROUP": "General_Users",
-          "deploymentBucketName": "amplify-giftingmindset-dev-00233-deployment",
-          "s3Key": "amplify-builds/giftingmindset3f17775ePostConfirmation-2f616867467268785539-build.zip"
-        }
+        "giftingmindset529cd011": {}
       }
     }
   }

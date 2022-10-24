@@ -66,7 +66,7 @@ const ConfirmSignUp = ({ setIsLoggedIn }) => {
        setOpenSnackBar(true)
        setSeverity('success')
        console.log('ConfirmSign up : ', confirmSignUp)
-       setIsLoggedIn(true)
+       //  setIsLoggedIn(true)
        resetForm()
       } catch (error) {
        setSnackBarMessage('Error')

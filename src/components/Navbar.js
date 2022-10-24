@@ -23,26 +23,6 @@ import LoginIcon from '@mui/icons-material/Login'
 const pages = ['About', 'Team', 'Process', 'Contact']
 
 const Navbar = () => {
- const initialState = {
-  name: '',
-  email: '',
-  password: '',
-  isMember: true,
- }
- const [values, setValues] = useState(initialState)
- const { user, isLoading } = useSelector((store) => store.user)
- const dispatch = useDispatch()
- const navigate = useNavigate()
-
- const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext()
- useEffect(() => {
-  if (user) {
-   setTimeout(() => {
-    navigate('/')
-   }, 2000)
-  }
- }, [user])
-
  return (
   <AppBar position="static" style={{ backgroundColor: '#231f20' }}>
    <Container maxWidth="xl">
@@ -119,14 +99,6 @@ const Navbar = () => {
        </Button>
       ))}
      </Box>
-     {user ? null : (
-      
-      <Box style={{ cursor: 'pointer' }} sx={{ flexGrow: 0 }}>
-      <Link to="/register">
-        <LoginIcon fontSize="large" style={{color:"white"}} />
-        </Link>
-      </Box>
-     )}
     </Toolbar>
    </Container>
   </AppBar>

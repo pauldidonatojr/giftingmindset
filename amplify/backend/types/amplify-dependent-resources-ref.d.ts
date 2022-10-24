@@ -1,16 +1,10 @@
 export type AmplifyDependentResourcesAttributes = {
-    "function": {
-        "giftingmindset3f17775ePostConfirmation": {
-            "Name": "string",
-            "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
-        }
-    },
     "auth": {
-        "giftingmindset3f17775e": {
+        "giftingmindset529cd011": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
+            "HostedUIDomain": "string",
+            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",

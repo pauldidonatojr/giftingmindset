@@ -32,6 +32,7 @@ import {
 } from '../components/StyledComponents'
 import { Auth } from 'aws-amplify'
 import { useState } from 'react'
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 
 const ReviewSchema = yup.object({
  UserName: yup.string().required('Please Enter Username'),
@@ -113,13 +114,22 @@ const SignInScreen = ({ setIsLoggedIn }) => {
        </TextFieldColumn>
 
        {!props.isSubmitting ? (
-        <Button
-         sx={{ marginBottom: '10px' }}
-         style={theme.login_Button}
-         onClick={props.handleSubmit}
-        >
-         Sign in
-        </Button>
+        <>
+         <Button
+          sx={{ marginBottom: '10px' }}
+          style={theme.login_Button}
+          onClick={props.handleSubmit}
+         >
+          Sign in
+         </Button>
+         <Button
+          sx={{ marginBottom: '10px' }}
+          style={theme.login_Button}
+          onClick={() => Auth.federatedSignIn()}
+         >
+          Sign in in with social media
+         </Button>
+        </>
        ) : (
         <CircularProgress sx={{ alignSelf: 'center', margin: '10px' }} />
        )}

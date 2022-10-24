@@ -1,29 +1,16 @@
 {
-  "function": {
-    "giftingmindset3f17775ePostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
+  "function": {},
   "auth": {
-    "giftingmindset3f17775e": {
+    "giftingmindset529cd011": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "giftingmindset3f17775ePostConfirmation",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
+      "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [],
+        "socialProviders": [
+          "FACEBOOK",
+          "GOOGLE"
+        ],
         "usernameAttributes": [
           "EMAIL"
         ],

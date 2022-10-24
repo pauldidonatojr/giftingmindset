@@ -122,7 +122,13 @@ const SignUpScreen = () => {
          <Error>{props.errors.Password}</Error>
         ) : null}
        </TextFieldColumn>
-
+       <Button
+        sx={{ marginBottom: '10px' }}
+        style={theme.login_Button}
+        onClick={() => Auth.federatedSignIn()}
+       >
+        Sign up in with social media
+       </Button>
        {!props.isSubmitting ? (
         <Button
          sx={{ marginBottom: '10px' }}
