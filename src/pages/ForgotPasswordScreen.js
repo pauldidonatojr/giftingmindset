@@ -32,10 +32,10 @@ import { useNavigate } from 'react-router-dom'
 const ClickButton = styled(Button)``
 const ButtonRowDiv = styled.div`
  display: flex;
- flex-direction: row;
+ flex-direction: column;
  width: 95%;
  height: fit-content;
- justify-content: space-between;
+ align-items: center;
  margin-top: 15px;
 `
 

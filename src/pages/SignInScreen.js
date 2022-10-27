@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PW_Icon from '../assets/icons/Pw_Icon.svg'
 import User_Icon from '../assets/icons/User_Icon.svg'
-import Help_Icon from '../assets/icons/Help_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
 import {
  Typography,
@@ -11,13 +10,10 @@ import {
  Button,
 } from '@mui/material'
 import theme from '../Theme'
-import Signup_Icon from '../assets/icons/Signup_Icon.svg'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import {
- LowerIcon,
  Error,
- LowerButtonContainerDiv,
  BackgroundDiv,
  MainColDiv,
  Logo,
@@ -25,7 +21,6 @@ import {
  TextfieldIconContainerDiv,
  TextfieldIcon,
  InputField,
- LowerRowDiv,
  ClickTextLower,
  ClickText,
  TextFieldColumn,
@@ -127,7 +122,7 @@ const SignInScreen = ({ setIsLoggedIn }) => {
           style={theme.login_Button}
           onClick={() => Auth.federatedSignIn()}
          >
-          Sign in in with social media
+          Sign in with social media
          </Button>
         </>
        ) : (

@@ -142,13 +142,13 @@ export const TextFieldContainerRowDiv = styled.div`
  justify-content: center;
 `
 export const TextfieldIcon = styled.img`
- background-color: #005d9e;
+ background-color: grey;
  height: 50%;
 `
 export const TextfieldIconContainerDiv = styled.div`
  display: flex;
  flex-direction: column;
- background-color: #005d9e;
+ background-color: grey;
  justify-content: center;
  align-items: center;
  height: 100%;
