@@ -19,8 +19,6 @@ import theme from '../Theme'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import {
- LowerIcon,
- LowerButtonContainerDiv,
  BackgroundDiv,
  MainColDiv,
  Logo,
@@ -28,8 +26,6 @@ import {
  TextfieldIconContainerDiv,
  TextfieldIcon,
  InputField,
- LowerRowDiv,
- ClickTextLower,
  ClickText,
  TextFieldColumn,
  Error,
@@ -52,8 +48,8 @@ const ForgotPasswordSubmitScreen = () => {
   <BackgroundDiv>
    <MainColDiv>
     <Logo src={Logo1} />
-    <Typography variant="login_blue_heading">Login to your account</Typography>
-    <Typography variant="login_gray_heading">
+    <Typography variant="plain_center">Login to your account</Typography>
+    <Typography variant="plain_center">
      Enter verification code to sign up.
     </Typography>
     <Formik
@@ -194,28 +190,6 @@ const ForgotPasswordSubmitScreen = () => {
      </Alert>
     </Snackbar>
    </MainColDiv>
-   <LowerRowDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Signup_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="/signUp"
-      underline="none"
-     >
-      {'Sign up'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Help_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="#"
-      underline="none"
-     >
-      {'Help'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-   </LowerRowDiv>
   </BackgroundDiv>
  )
 }

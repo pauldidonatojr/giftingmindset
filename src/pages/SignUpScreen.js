@@ -51,10 +51,10 @@ const SignUpScreen = () => {
   <BackgroundDiv>
    <MainColDiv>
     <Logo src={Logo1} />
-    <Typography variant="login_blue_heading">
+    <Typography variant="plain_center">
      Create your account for FREE!
     </Typography>
-    <Typography variant="login_gray_heading">
+    <Typography variant="plain_center">
      Enter your information below to get started.
     </Typography>
     <Formik
@@ -122,12 +122,22 @@ const SignUpScreen = () => {
          <Error>{props.errors.Password}</Error>
         ) : null}
        </TextFieldColumn>
+       <div>
+        Already a member?{' '}
+        <ClickTextLower
+         style={theme.typography.clicktext_lower_black}
+         href="/signIn"
+         underline="none"
+        >
+         {'Login'}
+        </ClickTextLower>
+       </div>
        <Button
         sx={{ marginBottom: '10px' }}
         style={theme.login_Button}
         onClick={() => Auth.federatedSignIn()}
        >
-        Sign up in with social media
+        Sign up with social media
        </Button>
        {!props.isSubmitting ? (
         <Button
@@ -159,35 +169,7 @@ const SignUpScreen = () => {
       {snackBarMessage}
      </Alert>
     </Snackbar>
-    <Typography variant="login_gray_heading">
-     By creating an account, you agree to our
-     <ClickText href="#" underline="none">
-      {' Terms & Privacy Policy.'}
-     </ClickText>
-    </Typography>
    </MainColDiv>
-   <LowerRowDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={User_Icon2} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="/signIn"
-      underline="none"
-     >
-      {'Login'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Help_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="#"
-      underline="none"
-     >
-      {'Help'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-   </LowerRowDiv>
   </BackgroundDiv>
  )
 }

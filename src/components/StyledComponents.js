@@ -101,10 +101,12 @@ export const BackgroundDiv = styled.div`
 export const MainColDiv = styled.div`
  display: flex;
  flex-direction: column;
- height: 80%;
- max-width: 290px;
+ height: 60%;
+ max-width: 300px;
  align-items: center;
  justify-content: center;
+ border-radius: 5px;
+ box-shadow: -1px 0px 8px 2px rgba(0, 0, 0, 0.39);
 `
 export const LowerRowDiv = styled.div`
  justify-content: space-between;
@@ -116,6 +118,7 @@ export const LowerRowDiv = styled.div`
 export const Logo = styled.img`
  width: 80%;
  margin-bottom: 20px;
+ border-radius: 5px;
 `
 export const LowerButtonContainerDiv = styled.div`
  display: flex;

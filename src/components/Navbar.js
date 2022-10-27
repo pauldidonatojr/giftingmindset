@@ -1,9 +1,5 @@
-import { React, useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { React } from 'react'
 import logo from '../assets/images/logo.PNG'
-import { FaBars } from 'react-icons/fa'
-import { useGlobalContext } from '../utils/context'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -13,14 +9,9 @@ import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import LoginIcon from '@mui/icons-material/Login'
 
-const pages = ['About', 'Team', 'Process', 'Contact']
+const pages = ['About', 'Process', 'Contact']
 
 const Navbar = () => {
  return (
@@ -94,9 +85,13 @@ const Navbar = () => {
      </Typography>
      <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
       {pages.map((page) => (
-       <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
+       //    <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
+       <a
+        style={{ marginLeft: '15px', color: 'white', display: 'block' }}
+        href={`#${page}`}
+       >
         {page}
-       </Button>
+       </a>
       ))}
      </Box>
     </Toolbar>

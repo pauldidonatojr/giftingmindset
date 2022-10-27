@@ -46,8 +46,8 @@ const SignInScreen = ({ setIsLoggedIn }) => {
   <BackgroundDiv>
    <MainColDiv>
     <Logo src={Logo1} />
-    <Typography variant="login_blue_heading">Login to your account</Typography>
-    <Typography variant="login_gray_heading">
+    <Typography variant="plain_center">Login to your account</Typography>
+    <Typography variant="plain_center">
      Enter your username and password to login.
     </Typography>
     <Formik
@@ -151,33 +151,17 @@ const SignInScreen = ({ setIsLoggedIn }) => {
       {snackBarMessage}
      </Alert>
     </Snackbar>
-
+    <ClickTextLower
+     style={theme.typography.clicktext_lower_black}
+     href="/signUp"
+     underline="none"
+    >
+     {'New user? Sign up'}
+    </ClickTextLower>
     <ClickText href="/forgotpassword" underline="none">
      {'Forgot your password?'}
     </ClickText>
    </MainColDiv>
-   <LowerRowDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Signup_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="/signUp"
-      underline="none"
-     >
-      {'Sign up'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Help_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="#"
-      underline="none"
-     >
-      {'Help'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-   </LowerRowDiv>
   </BackgroundDiv>
  )
 }

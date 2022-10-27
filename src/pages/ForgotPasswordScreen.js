@@ -51,8 +51,8 @@ const ForgotPasswordScreen = () => {
   <BackgroundDiv>
    <MainColDiv>
     <Logo src={Logo1} />
-    <Typography variant="login_blue_heading">Forgot your Password?</Typography>
-    <Typography variant="login_gray_heading">
+    <Typography variant="plain_center">Forgot your Password?</Typography>
+    <Typography variant="plain_center">
      Enter your username below to reset your password.
     </Typography>
     <Formik
@@ -101,14 +101,12 @@ const ForgotPasswordScreen = () => {
           <Error>{props.errors.UserName}</Error>
          ) : null}
         </TextFieldColumn>
+
         <ButtonRowDiv>
-         <ClickButton
-          onClick={props.handleSubmit}
-          style={theme.Submit_Button_blue}
-         >
+         <ClickButton onClick={props.handleSubmit} style={theme.login_Button}>
           Submit
          </ClickButton>
-         <ClickButton style={theme.Submit_Button_gray}>Cancel</ClickButton>
+         <ClickButton style={theme.login_Button}>Cancel</ClickButton>
         </ButtonRowDiv>
        </>
       )
@@ -130,28 +128,6 @@ const ForgotPasswordScreen = () => {
      </Alert>
     </Snackbar>
    </MainColDiv>
-   <LowerRowDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={User_Icon2} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="/signIn"
-      underline="none"
-     >
-      {'Login'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Help_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="#"
-      underline="none"
-     >
-      {'Help'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-   </LowerRowDiv>
   </BackgroundDiv>
  )
 }
