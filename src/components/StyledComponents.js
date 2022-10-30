@@ -24,7 +24,7 @@ export const SelectorButtonRow = styled.div`
  gap: 20px;
 `
 export const MainBackground = styled.div`
- padding-left: 75px;
+ padding-left: 100px;
  display: flex;
  flex-direction: column;
  width: 100%;

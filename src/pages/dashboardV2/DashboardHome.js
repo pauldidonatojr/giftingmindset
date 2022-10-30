@@ -12,15 +12,14 @@ const MainBackground = styled.div`
  width: 100%;
  height: 100vh;
  align-content: flex-start;
- /* padding-left: 3%; */
+ padding-left: 75px;
  padding-top: 70px;
  gap: 10px;
 `
-const DashboardV2 = () => {
+const DashboardHome = () => {
  return (
   <>
    <MainBackground>
-    <HeaderDrawer />
     <DashboardCard card_data={'0'} card_title={'Joined today'} />
     <DashboardCard card_data={'1'} card_title={'Active Ids'} />
     <DashboardCard card_data={'2'} card_title={'Total Users'} />
@@ -30,4 +29,4 @@ const DashboardV2 = () => {
  )
 }
 
-export default DashboardV2
+export default DashboardHome

@@ -36,15 +36,15 @@ export const ManageUsersTreeview = ({ usersExpanded }) => {
     <MuiTreeitem
      nodeId="2"
      label="Add User"
-     onClick={() => navigate('/admin/adduser')}
+     onClick={() => navigate('/adduser')}
     />
     <MuiTreeitem
-     onClick={() => navigate('/admin/allmembers')}
+     onClick={() => navigate('/allmembers')}
      nodeId="3"
      label="All Members"
     />
     <MuiTreeitem
-     onClick={() => navigate('/admin/activaterequest')}
+     onClick={() => navigate('/activaterequest')}
      nodeId="4"
      label="Activate Request"
     />
@@ -69,12 +69,12 @@ export const GenealogyTreeview = ({ geneExpanded }) => {
   >
    <TreeItem nodeId="1" label="Genealogy">
     <TreeItem
-     onClick={() => navigate('/admin/genealogytree')}
+     onClick={() => navigate('/genealogytree')}
      nodeId="2"
      label="Genealogy tree"
     />
     <TreeItem
-     onClick={() => navigate('/admin/directteam')}
+     onClick={() => navigate('/directteam')}
      nodeId="3"
      label="Direct team"
     />

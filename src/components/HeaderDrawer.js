@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { styled, useTheme } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import MuiDrawer from '@mui/material/Drawer'
 import MuiAppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import List from '@mui/material/List'
-import CssBaseline from '@mui/material/CssBaseline'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
@@ -16,8 +15,6 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -30,7 +27,7 @@ import FactCheckIcon from '@mui/icons-material/FactCheck'
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
  ManageUsersTreeview,
  GenealogyTreeview,
@@ -41,8 +38,10 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { removeUserFromLocalStorage } from '../utils/localStorage'
 import GM_Logo from '../assets/images/GM_logo.png'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { theme } from '../Theme'
+import { Auth } from 'aws-amplify'
+
 const drawerWidth = 300
 
 const openedMixin = (theme) => ({
@@ -111,14 +110,17 @@ const Drawer = styled(MuiDrawer, {
  }),
 }))
 
-const HeaderDrawer = () => {
- const { user, isLoading } = useSelector((store) => store.user)
+const HeaderDrawer = ({ setIsLoggedIn }) => {
  const navigate = useNavigate()
 
- const handleLogout = () => {
+ const handleLogout = async () => {
   removeUserFromLocalStorage()
-  if (user) {
+  try {
+   await Auth.signOut()
+   setIsLoggedIn(false)
    navigate('/landing')
+  } catch (error) {
+   console.log('error signing out: ', error)
   }
  }
  const [open, setOpen] = useState(false)
@@ -263,6 +265,8 @@ const HeaderDrawer = () => {
            ? setSuppExpanded(['1'])
            : setSuppExpanded([])
           handleDrawerOpen()
+         } else if (index == 0) {
+          return navigate('/dashboard')
          }
         }}
         sx={{
