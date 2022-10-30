@@ -15,19 +15,7 @@ import ForgotPasswordScreen from './pages/ForgotPasswordScreen'
 import ConfirmSignUp from './pages/ConfirmSignUp'
 import 'react-toastify/dist/ReactToastify.css'
 import { Auth, API, Storage } from 'aws-amplify'
-import { MainBackground } from './components/StyledComponents'
-import {
- Stats,
- ManageUsers,
- Genealogy,
- Gifthistory,
- Settings,
- Completeboards,
- Vouchers,
- Support,
- Logout,
- SharedLayout,
-} from './pages/dashboard'
+import { Stats, Logout } from './pages/dashboard'
 import HeaderDrawer from './components/HeaderDrawer'
 import awsmobile from './aws-exports'
 

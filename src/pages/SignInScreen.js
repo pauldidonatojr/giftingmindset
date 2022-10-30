@@ -25,12 +25,15 @@ import {
  ClickText,
  TextFieldColumn,
 } from '../components/StyledComponents'
+import { socialSignInStyle } from './SignUpScreen'
 import { Auth } from 'aws-amplify'
 import { useState } from 'react'
+import Facebook from '../assets/images/facebookbtn.png'
+import Google from '../assets/images/googlebtn.png'
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 
 const ReviewSchema = yup.object({
- UserName: yup.string().required('Please Enter Username'),
+ Email: yup.string().email().required('Please enter a valid email'),
  Password: yup.string().required('Password error'),
 })
 const SignInScreen = ({ setIsLoggedIn }) => {
@@ -43,18 +46,18 @@ const SignInScreen = ({ setIsLoggedIn }) => {
     <Logo src={Logo1} />
     <Typography variant="plain_center">Login to your account</Typography>
     <Typography variant="plain_center">
-     Enter your username and password to login.
+     Enter your Email and password to login.
     </Typography>
     <Formik
      validationSchema={ReviewSchema}
      initialValues={{
-      UserName: '',
+      Email: '',
       Password: '',
      }}
      onSubmit={async (values, { resetForm }) => {
       console.log('OnSubmit click', values)
       try {
-       const user = await Auth.signIn(values.UserName, values.Password)
+       const user = await Auth.signIn(values.Email, values.Password)
        //  setIsLoggedIn(true)
        setSnackBarMessage('Success')
        setOpenSnackBar(true)
@@ -78,15 +81,15 @@ const SignInScreen = ({ setIsLoggedIn }) => {
           <TextfieldIcon src={User_Icon} />
          </TextfieldIconContainerDiv>
          <InputField
-          onChange={props.handleChange('UserName')}
-          value={props.values.UserName}
+          onChange={props.handleChange('Email')}
+          value={props.values.Email}
           sx={{ input: { color: 'black' } }}
           size="small"
-          placeholder="Username"
+          placeholder="Email"
          />
         </TextFieldContainerRowDiv>
-        {props.errors.UserName && props.touched.UserName ? (
-         <Error>{props.errors.UserName}</Error>
+        {props.errors.Email && props.touched.Email ? (
+         <Error>{props.errors.Email}</Error>
         ) : null}
        </TextFieldColumn>
        <TextFieldColumn>
@@ -107,6 +110,13 @@ const SignInScreen = ({ setIsLoggedIn }) => {
          <Error>{props.errors.Password}</Error>
         ) : null}
        </TextFieldColumn>
+       <ClickText
+        style={theme.typography.clicktext_lower_black}
+        href="/forgotpassword"
+        underline="none"
+       >
+        {'Forgot your password?'}
+       </ClickText>
 
        {!props.isSubmitting ? (
         <>
@@ -117,13 +127,6 @@ const SignInScreen = ({ setIsLoggedIn }) => {
          >
           Sign in
          </Button>
-         <Button
-          sx={{ marginBottom: '10px' }}
-          style={theme.login_Button}
-          onClick={() => Auth.federatedSignIn()}
-         >
-          Sign in with social media
-         </Button>
         </>
        ) : (
         <CircularProgress sx={{ alignSelf: 'center', margin: '10px' }} />
@@ -131,6 +134,29 @@ const SignInScreen = ({ setIsLoggedIn }) => {
       </>
      )}
     </Formik>
+    {'Or'}
+    <>
+     <img
+      alt=""
+      src={Facebook}
+      style={socialSignInStyle}
+      onClick={() =>
+       Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Facebook,
+       })
+      }
+     />
+     <img
+      alt=""
+      src={Google}
+      style={socialSignInStyle}
+      onClick={() =>
+       Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Google,
+       })
+      }
+     />
+    </>
     <Snackbar
      open={openSnackBar}
      autoHideDuration={4000}
@@ -153,9 +179,6 @@ const SignInScreen = ({ setIsLoggedIn }) => {
     >
      {'New user? Sign up'}
     </ClickTextLower>
-    <ClickText href="/forgotpassword" underline="none">
-     {'Forgot your password?'}
-    </ClickText>
    </MainColDiv>
   </BackgroundDiv>
  )

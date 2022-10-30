@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PW_Icon from '../assets/icons/Pw_Icon.svg'
 import User_Icon from '../assets/icons/User_Icon.svg'
-import Help_Icon from '../assets/icons/Help_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
+import { useNavigate } from 'react-router-dom'
+
 import {
  Typography,
  CircularProgress,
@@ -11,12 +12,9 @@ import {
  Alert,
 } from '@mui/material'
 import theme from '../Theme'
-import Signup_Icon from '../assets/icons/Signup_Icon.svg'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import {
- LowerIcon,
- LowerButtonContainerDiv,
  BackgroundDiv,
  MainColDiv,
  Logo,
@@ -24,8 +22,6 @@ import {
  TextfieldIconContainerDiv,
  TextfieldIcon,
  InputField,
- LowerRowDiv,
- ClickTextLower,
  ClickText,
  TextFieldColumn,
  Error,
@@ -34,10 +30,11 @@ import { Auth } from 'aws-amplify'
 import { useState } from 'react'
 
 const ReviewSchema = yup.object({
- UserName: yup.string().required('Please Enter Username'),
+ Email: yup.string().email().required('Please enter a valid email'),
  Code: yup.number().required(),
 })
 const ConfirmSignUp = ({ setIsLoggedIn }) => {
+ let navigate = useNavigate()
  const [openSnackBar, setOpenSnackBar] = useState(false)
  const [snackBarMessage, setSnackBarMessage] = useState('')
  const [severity, setSeverity] = useState('info')
@@ -52,21 +49,18 @@ const ConfirmSignUp = ({ setIsLoggedIn }) => {
     <Formik
      validationSchema={ReviewSchema}
      initialValues={{
-      UserName: '',
+      Email: '',
       Code: '',
      }}
      onSubmit={async (values, { resetForm }) => {
-      console.log('OnSubmit click', values)
       try {
-       const confirmSignUp = await Auth.confirmSignUp(
-        values.UserName,
-        values.Code
-       )
+       const confirmSignUp = await Auth.confirmSignUp(values.Email, values.Code)
        setSnackBarMessage('Success')
        setOpenSnackBar(true)
        setSeverity('success')
        console.log('ConfirmSign up : ', confirmSignUp)
        //  setIsLoggedIn(true)
+       navigate('/landing')
        resetForm()
       } catch (error) {
        setSnackBarMessage('Error')
@@ -86,13 +80,16 @@ const ConfirmSignUp = ({ setIsLoggedIn }) => {
           <TextfieldIcon src={User_Icon} />
          </TextfieldIconContainerDiv>
          <InputField
-          onChange={props.handleChange('UserName')}
-          value={props.values.UserName}
+          onChange={props.handleChange('Email')}
+          value={props.values.Email}
           sx={{ input: { color: 'black' } }}
           size="small"
-          placeholder="Username"
+          placeholder="Email"
          />
         </TextFieldContainerRowDiv>
+        {props.errors.Email && props.touched.Email ? (
+         <Error>{props.errors.Email}</Error>
+        ) : null}
        </TextFieldColumn>
        <TextFieldColumn>
         <TextFieldContainerRowDiv>
@@ -118,11 +115,28 @@ const ConfirmSignUp = ({ setIsLoggedIn }) => {
          style={theme.login_Button}
          onClick={props.handleSubmit}
         >
-         Sign in
+         Confirm Email
         </Button>
        ) : (
         <CircularProgress sx={{ alignSelf: 'center', margin: '10px' }} />
        )}
+       <ClickText
+        style={theme.typography.clicktext_lower_black}
+        onClick={async () => {
+         console.log('Resend verification code clicked')
+         try {
+          await Auth.resendSignUp(props.values.Email)
+          console.log('code resent successfully')
+         } catch (err) {
+          setOpenSnackBar(true)
+          setSnackBarMessage('Error:', err)
+          console.log('error resending code: ', err)
+         }
+        }}
+        underline="none"
+       >
+        {'Resend verification code'}
+       </ClickText>
       </>
      )}
     </Formik>
@@ -141,43 +155,7 @@ const ConfirmSignUp = ({ setIsLoggedIn }) => {
       {snackBarMessage}
      </Alert>
     </Snackbar>
-    <ClickText
-     onClick={async () => {
-      console.log('Resend verification code clicked')
-      //    try {
-      //     await Auth.resendSignUp();
-      //     console.log('code resent successfully');
-      // } catch (err) {
-      //     console.log('error resending code: ', err);
-      // }
-     }}
-     underline="none"
-    >
-     {'Resend verification code'}
-    </ClickText>
    </MainColDiv>
-   <LowerRowDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Signup_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="/signUp"
-      underline="none"
-     >
-      {'Sign up'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-    <LowerButtonContainerDiv>
-     <LowerIcon src={Help_Icon} />
-     <ClickTextLower
-      style={theme.typography.clicktext_lower_blue}
-      href="#"
-      underline="none"
-     >
-      {'Help'}
-     </ClickTextLower>
-    </LowerButtonContainerDiv>
-   </LowerRowDiv>
   </BackgroundDiv>
  )
 }

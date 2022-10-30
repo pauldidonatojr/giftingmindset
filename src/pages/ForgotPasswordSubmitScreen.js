@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import Envelope_Open_Icon from '../assets/icons/Envelope_Open_Icon.svg'
-import Help_Icon from '../assets/icons/Help_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
 import PW_Icon from '../assets/icons/Pw_Icon.svg'
 import User_Icon from '../assets/icons/User_Icon.svg'
-import Signup_Icon from '../assets/icons/Signup_Icon.svg'
-
 import {
  Typography,
  CircularProgress,
- OutlinedInput,
- Link,
  Button,
  Snackbar,
  Alert,
@@ -35,7 +29,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const ReviewSchema = yup.object({
- UserName: yup.string().required('Please Enter Username'),
+ Email: yup.string().email().required('Please enter a valid email'),
  Code: yup.number().required(),
  NewPassword: yup.string().required('Password error'),
 })
@@ -55,7 +49,7 @@ const ForgotPasswordSubmitScreen = () => {
     <Formik
      validationSchema={ReviewSchema}
      initialValues={{
-      UserName: '',
+      Email: '',
       Code: '',
       NewPassword: '',
      }}
@@ -63,7 +57,7 @@ const ForgotPasswordSubmitScreen = () => {
       console.log('OnSubmit click', values)
       try {
        await Auth.forgotPasswordSubmit(
-        values.UserName,
+        values.Email,
         values.Code,
         values.NewPassword
        )
@@ -92,15 +86,15 @@ const ForgotPasswordSubmitScreen = () => {
           <TextfieldIcon src={User_Icon} />
          </TextfieldIconContainerDiv>
          <InputField
-          onChange={props.handleChange('UserName')}
-          value={props.values.UserName}
+          onChange={props.handleChange('Email')}
+          value={props.values.Email}
           sx={{ input: { color: 'black' } }}
           size="small"
-          placeholder="Username"
+          placeholder="Email"
          />
         </TextFieldContainerRowDiv>
-        {props.errors.UserName && props.touched.UserName ? (
-         <Error>{props.errors.UserName}</Error>
+        {props.errors.Email && props.touched.Email ? (
+         <Error>{props.errors.Email}</Error>
         ) : null}
        </TextFieldColumn>
        <TextFieldColumn>
@@ -116,8 +110,8 @@ const ForgotPasswordSubmitScreen = () => {
           placeholder="Verification code"
          />
         </TextFieldContainerRowDiv>
-        {props.errors.UserName && props.touched.UserName ? (
-         <Error>{props.errors.UserName}</Error>
+        {props.errors.Code && props.touched.Code ? (
+         <Error>{props.errors.Code}</Error>
         ) : null}
        </TextFieldColumn>
        <TextFieldColumn>
@@ -151,11 +145,12 @@ const ForgotPasswordSubmitScreen = () => {
         <CircularProgress sx={{ alignSelf: 'center' }} />
        )}
        <ClickText
+        style={theme.typography.clicktext_lower_black}
         onClick={async () => {
          console.log('Resend verification code clicked')
-         console.log('Username value : ', props.values.UserName)
+         console.log('Username value : ', props.values.Email)
          try {
-          await Auth.forgotPassword(props.values.UserName)
+          await Auth.forgotPassword(props.values.Email)
           setSnackBarMessage('Success')
           setOpenSnackBar(true)
           setSeverity('success')

@@ -4,14 +4,10 @@ import { Typography, Snackbar, Alert } from '@mui/material'
 import Button from '@mui/material/Button'
 import theme from '../Theme'
 import Envelope_Open_Icon from '../assets/icons/Envelope_Open_Icon.svg'
-import Help_Icon from '../assets/icons/Help_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
-import User_Icon2 from '../assets/icons/User_Icon2.svg'
 import { useState } from 'react'
 
 import {
- LowerIcon,
- LowerButtonContainerDiv,
  BackgroundDiv,
  MainColDiv,
  Logo,
@@ -19,8 +15,6 @@ import {
  TextfieldIconContainerDiv,
  TextfieldIcon,
  InputField,
- LowerRowDiv,
- ClickTextLower,
  TextFieldColumn,
  Error,
 } from '../components/StyledComponents'
@@ -40,7 +34,7 @@ const ButtonRowDiv = styled.div`
 `
 
 const ReviewSchema = yup.object({
- UserName: yup.string().required('Please enter correct Username'),
+ Email: yup.string().email().required('Please enter a valid email'),
 })
 const ForgotPasswordScreen = () => {
  const [openSnackBar, setOpenSnackBar] = useState(false)
@@ -53,17 +47,17 @@ const ForgotPasswordScreen = () => {
     <Logo src={Logo1} />
     <Typography variant="plain_center">Forgot your Password?</Typography>
     <Typography variant="plain_center">
-     Enter your username below to reset your password.
+     Enter your Email below to reset your password.
     </Typography>
     <Formik
      validationSchema={ReviewSchema}
      initialValues={{
-      UserName: '',
+      Email: '',
      }}
      onSubmit={async (values, { resetForm }) => {
       console.log('OnSubmit click', values)
       try {
-       await Auth.forgotPassword(values.UserName)
+       await Auth.forgotPassword(values.Email)
        // .then((data) => console.log(data))
        // .catch((err) => console.log(err));
        setSnackBarMessage('Success')
@@ -90,23 +84,29 @@ const ForgotPasswordScreen = () => {
            <TextfieldIcon src={Envelope_Open_Icon} />
           </TextfieldIconContainerDiv>
           <InputField
-           onChange={props.handleChange('UserName')}
-           value={props.values.UserName}
+           onChange={props.handleChange('Email')}
+           value={props.values.Email}
            size="small"
-           placeholder="User name"
+           placeholder="Email"
            sx={{ input: { color: 'black' } }}
           />
          </TextFieldContainerRowDiv>
-         {props.errors.UserName && props.touched.UserName ? (
-          <Error>{props.errors.UserName}</Error>
+         {props.errors.Email && props.touched.Email ? (
+          <Error>{props.errors.Email}</Error>
          ) : null}
         </TextFieldColumn>
-
         <ButtonRowDiv>
          <ClickButton onClick={props.handleSubmit} style={theme.login_Button}>
           Submit
          </ClickButton>
-         <ClickButton style={theme.login_Button}>Cancel</ClickButton>
+         <ClickButton
+          onClick={() => {
+           props.resetForm()
+          }}
+          style={theme.login_Button}
+         >
+          Cancel
+         </ClickButton>
         </ButtonRowDiv>
        </>
       )

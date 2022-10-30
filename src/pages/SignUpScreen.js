@@ -2,11 +2,10 @@
 
 import PW_Icon from '../assets/icons/Pw_Icon.svg'
 import User_Icon from '../assets/icons/User_Icon.svg'
-import Envelope_Close from '../assets/icons/User_Icon.svg'
-import User_Icon2 from '../assets/icons/User_Icon2.svg'
-import Help_Icon from '../assets/icons/Help_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
-
+import Facebook from '../assets/images/facebookbtn.png'
+import Google from '../assets/images/googlebtn.png'
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 import {
  Typography,
  Button,
@@ -16,18 +15,14 @@ import {
 } from '@mui/material'
 import theme from '../Theme'
 import {
- LowerIcon,
- LowerButtonContainerDiv,
  BackgroundDiv,
  MainColDiv,
  TextFieldContainerRowDiv,
  TextfieldIconContainerDiv,
  TextfieldIcon,
  InputField,
- LowerRowDiv,
  ClickTextLower,
  Logo,
- ClickText,
  TextFieldColumn,
  Error,
 } from '../components/StyledComponents'
@@ -42,6 +37,11 @@ const ReviewSchema = yup.object({
  Password: yup.string().required('Password error'),
 })
 
+export const socialSignInStyle = {
+ width: '80%',
+ marginBottom: '10px',
+ cursor: 'pointer',
+}
 const SignUpScreen = () => {
  const [openSnackBar, setOpenSnackBar] = useState(false)
  const [snackBarMessage, setSnackBarMessage] = useState('')
@@ -122,23 +122,6 @@ const SignUpScreen = () => {
          <Error>{props.errors.Password}</Error>
         ) : null}
        </TextFieldColumn>
-       <div>
-        Already a member?{' '}
-        <ClickTextLower
-         style={theme.typography.clicktext_lower_black}
-         href="/signIn"
-         underline="none"
-        >
-         {'Login'}
-        </ClickTextLower>
-       </div>
-       <Button
-        sx={{ marginBottom: '10px' }}
-        style={theme.login_Button}
-        onClick={() => Auth.federatedSignIn()}
-       >
-        Sign up with social media
-       </Button>
        {!props.isSubmitting ? (
         <Button
          sx={{ marginBottom: '10px' }}
@@ -154,6 +137,39 @@ const SignUpScreen = () => {
       </>
      )}
     </Formik>
+    {'Or'}
+    <>
+     <img
+      alt=""
+      src={Facebook}
+      style={socialSignInStyle}
+      onClick={() =>
+       Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Facebook,
+       })
+      }
+     />
+     <img
+      alt=""
+      src={Google}
+      style={socialSignInStyle}
+      onClick={() =>
+       Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Google,
+       })
+      }
+     />
+     <div>
+      Already a member?{' '}
+      <ClickTextLower
+       style={theme.typography.clicktext_lower_black}
+       href="/signIn"
+       underline="none"
+      >
+       {'Login'}
+      </ClickTextLower>
+     </div>
+    </>
     <Snackbar
      open={openSnackBar}
      autoHideDuration={4000}
