@@ -11,7 +11,6 @@ import Landing from './pages/Landing'
 import ForgotPasswordSubmitScreen from './pages/ForgotPasswordSubmitScreen'
 import ForgotPasswordScreen from './pages/ForgotPasswordScreen'
 import ConfirmSignUp from './pages/ConfirmSignUp'
-import 'react-toastify/dist/ReactToastify.css'
 import { Auth, API, Storage } from 'aws-amplify'
 import awsmobile from './aws-exports'
 import { useState, useEffect } from 'react'
@@ -66,78 +65,6 @@ function App() {
     <Route path="/allmembers" element={<AllMembers />} />
    </Route>
   </Routes>
-
-  //    <Routes>
-  //     <Route
-  //      path="/"
-  //      element={
-  //       <ProtectedRoute>
-  //        <DashboardV2 />
-  //       </ProtectedRoute>
-  //      }
-  //     >
-  //      <Route index element={<Stats />} />
-  //      <Route path="logout" element={<Logout />} />
-  //     </Route>
-  //     <Route path="landing" element={<Landing />} />
-  //     <Route path="signUp" element={<SignUpScreen />} />
-  //     <Route path="signIn" element={<SignInScreen />} />
-  //     <Route path="/confirmSignUp" element={<ConfirmSignUp />} />
-  //     <Route path="/forgotpassword" element={<ForgotPasswordScreen />} />
-  //     <Route
-  //      path="/forgotpasswordsubmit"
-  //      element={<ForgotPasswordSubmitScreen />}
-  //     />
-
-  //     <Route path="*" element={<Error />} />
-  //     <Route path="admin/dashboardv2" element={<DashboardV2 />} />
-  //     <Route
-  //      path="admin/adduser"
-  //      element={
-  //       <>
-  //        <HeaderDrawer />
-  //        <AddUser />
-  //       </>
-  //      }
-  //     />
-  //     <Route
-  //      path="admin/allmembers"
-  //      element={
-  //       <>
-  //        <HeaderDrawer />
-  //        <AllMembers />
-  //       </>
-  //      }
-  //     />
-  //     <Route
-  //      path="admin/genealogytree"
-  //      element={
-  //       <>
-  //        <HeaderDrawer />
-  //        <GenealogyTree />
-  //       </>
-  //      }
-  //     />
-  //     <Route
-  //      path="admin/activaterequest"
-  //      element={
-  //       <>
-  //        <HeaderDrawer />
-  //        <ActivateRequest />
-  //       </>
-  //      }
-  //     />
-  //     <Route
-  //      path="admin/directteam"
-  //      element={
-  //       <>
-  //        <HeaderDrawer />
-  //        <DirectTeam />
-  //       </>
-  //      }
-  //     />
-  //    </Routes>
-  //    <ToastContainer position="top-center" />
  )
 }
 

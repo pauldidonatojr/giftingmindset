@@ -5,6 +5,7 @@ import User_Icon from '../assets/icons/User_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
 import Facebook from '../assets/images/facebookbtn.png'
 import Google from '../assets/images/googlebtn.png'
+import axios from 'axios'
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 import {
  Typography,
@@ -47,6 +48,27 @@ const SignUpScreen = () => {
  const [snackBarMessage, setSnackBarMessage] = useState('')
  const [severity, setSeverity] = useState('info')
  let navigate = useNavigate()
+ const uploadUserToDb = async (email, password) => {
+  try {
+   const dbResponse = axios.post(
+    'https://thegiftingmindset.com/gfm_demo1/includes/react_auth.php',
+    {
+     type: 'Signup',
+     email: email,
+     password: password,
+    },
+    {
+     headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+     },
+    }
+   )
+   console.log('success db : ', dbResponse)
+  } catch (err) {
+   console.log('DB error :', err)
+  }
+ }
  return (
   <BackgroundDiv>
    <MainColDiv>
@@ -69,6 +91,7 @@ const SignUpScreen = () => {
         username: values.Email,
         password: values.Password,
        })
+       uploadUserToDb(values.email, values.password)
        setSnackBarMessage('Success')
        setOpenSnackBar(true)
        setSeverity('success')

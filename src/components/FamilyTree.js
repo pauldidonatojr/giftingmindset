@@ -55,12 +55,11 @@ const FamilyTree = ({ data, setNodeId }) => {
    console.log(nodeHistoryArray[nodeHistoryArrayIndex])
   }
  }
-
  return treeNodes === 'loading' ? (
   <LoaderContainer>
    <CircularProgress sx={{ color: 'white' }} />
   </LoaderContainer>
- ) : treeNodes == null ? (
+ ) : (treeNodes == null) | !Array.isArray(treeNodes) ? (
   <>
    <Alert style={{ margin: '100px' }} severity="error">
     <strong>Error : </strong>

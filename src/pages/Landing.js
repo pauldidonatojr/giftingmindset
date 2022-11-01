@@ -1,4 +1,4 @@
-import { Navbar } from '../components'
+import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import Grow from '@mui/material/Grow'
 import { useState, useEffect } from 'react'
@@ -54,7 +54,9 @@ const ButtonsContainer = styled.div`
  flex-direction: row;
  height: fit-content;
  gap: 5px;
- margin: 50px;
+ margin-left: 50px;
+ margin-top: 50px;
+ width: fit-content;
 `
 
 const Footer = styled.div`

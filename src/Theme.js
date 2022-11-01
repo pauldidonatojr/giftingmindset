@@ -1,6 +1,4 @@
 import { createTheme } from '@mui/material/styles'
-import facepaint from 'facepaint'
-import { hover } from '@testing-library/user-event/dist/hover'
 export const theme = createTheme({
  palette: {
   yellow: '#1e2026',

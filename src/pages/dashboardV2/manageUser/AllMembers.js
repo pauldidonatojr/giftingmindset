@@ -135,14 +135,13 @@ const AllMembers = () => {
    },
   ])
  }
-
  return (
   <MainBackground>
    {AllMembersData === 'Loading' ? (
     <LoaderContainer>
      <CircularProgress sx={{ color: 'white' }} />
     </LoaderContainer>
-   ) : (
+   ) : Array.isArray(AllMembersData) === true ? (
     <>
      <HeaderRow heading={'Users'} />
      {/* <Divider  light /> */}
@@ -174,6 +173,8 @@ const AllMembers = () => {
       </TableContainer>
      </ContentContainer>
     </>
+   ) : (
+    <h1 style={{ color: 'white' }}>Incorrect data</h1>
    )}
   </MainBackground>
  )

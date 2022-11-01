@@ -27,7 +27,6 @@ import FactCheckIcon from '@mui/icons-material/FactCheck'
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useSelector } from 'react-redux'
 import {
  ManageUsersTreeview,
  GenealogyTreeview,
@@ -36,7 +35,6 @@ import {
  SupportTreeview,
 } from './DashboardMenuTreeview'
 import { useNavigate } from 'react-router-dom'
-import { removeUserFromLocalStorage } from '../utils/localStorage'
 import GM_Logo from '../assets/images/GM_logo.png'
 import { useState } from 'react'
 import { theme } from '../Theme'
@@ -114,7 +112,6 @@ const HeaderDrawer = ({ setIsLoggedIn }) => {
  const navigate = useNavigate()
 
  const handleLogout = async () => {
-  removeUserFromLocalStorage()
   try {
    await Auth.signOut()
    setIsLoggedIn(false)
