@@ -60,7 +60,7 @@ const ConfirmSignUp = ({ setIsLoggedIn }) => {
        setSeverity('success')
        console.log('ConfirmSign up : ', confirmSignUp)
        setIsLoggedIn(true)
-       navigate('/landing')
+       navigate('/dashboard')
        resetForm()
       } catch (error) {
        setSnackBarMessage('Error')

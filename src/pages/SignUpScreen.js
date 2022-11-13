@@ -50,7 +50,7 @@ const SignUpScreen = () => {
  let navigate = useNavigate()
  const uploadUserToDb = async (email, password) => {
   try {
-   const dbResponse = axios.post(
+   const dbResponse = await axios.post(
     'https://thegiftingmindset.com/gfm_demo1/includes/react_auth.php',
     {
      type: 'Signup',
@@ -58,10 +58,7 @@ const SignUpScreen = () => {
      password: password,
     },
     {
-     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-     },
+     headers: {},
     }
    )
    console.log('success db : ', dbResponse)
@@ -90,8 +87,11 @@ const SignUpScreen = () => {
        const { user } = await Auth.signUp({
         username: values.Email,
         password: values.Password,
+        attributes: {
+         'custom:type': 'admin',
+        },
        })
-       uploadUserToDb(values.email, values.password)
+       await uploadUserToDb(values.Email, values.Password)
        setSnackBarMessage('Success')
        setOpenSnackBar(true)
        setSeverity('success')

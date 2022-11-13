@@ -78,11 +78,39 @@ export const GenealogyTreeview = ({ geneExpanded }) => {
      nodeId="3"
      label="Direct team"
     />
-    <TreeItem nodeId="4" label="Downline Team" />
+    <TreeItem
+     onClick={() => navigate('/downline')}
+     nodeId="4"
+     label="Downline Team"
+    />
    </TreeItem>
   </TreeView>
  )
 }
+
+export const WalletDataView = ({ walletExpanded }) => {
+ let navigate = useNavigate()
+
+ return (
+  <TreeView
+   expanded={walletExpanded}
+   selected={null}
+   aria-label="file system navigator"
+   defaultCollapseIcon={<ExpandMoreIcon />}
+   defaultExpandIcon={<ChevronRightIcon />}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
+  >
+   <TreeItem nodeId="1" label="Wallet">
+    <TreeItem
+     onClick={() => navigate('/walletdata')}
+     nodeId="2"
+     label="Wallet Data"
+    />
+   </TreeItem>
+  </TreeView>
+ )
+}
+
 export const SettingsTreeview = ({ settingExpanded }) => {
  return (
   <TreeView
@@ -128,6 +156,8 @@ export const VouchersTreeview = ({ vouchExpanded }) => {
  )
 }
 export const SupportTreeview = ({ suppExpanded }) => {
+ let navigate = useNavigate()
+
  return (
   <TreeView
    expanded={suppExpanded}
@@ -138,8 +168,40 @@ export const SupportTreeview = ({ suppExpanded }) => {
    sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
   >
    <TreeItem nodeId="1" label="Support">
-    <TreeItem nodeId="2" label="Pending Queries" />
-    <TreeItem nodeId="3" label="Resolved Queries" />
+    <TreeItem
+     onClick={() => navigate('/pendingqueries')}
+     nodeId="2"
+     label="Pending Queries"
+    />
+    <TreeItem
+     onClick={() => navigate('/resolvedqueries')}
+     nodeId="3"
+     label="Resolved Queries"
+    />
+   </TreeItem>
+  </TreeView>
+ )
+}
+
+export const UserSupportTreeview = ({ suppExpanded }) => {
+ let navigate = useNavigate()
+
+ return (
+  <TreeView
+   expanded={suppExpanded}
+   selected={null}
+   aria-label="file system navigator"
+   defaultCollapseIcon={<ExpandMoreIcon />}
+   defaultExpandIcon={<ChevronRightIcon />}
+   sx={{ height: 'fit-content', flexGrow: 1, maxWidth: 400 }}
+  >
+   <TreeItem nodeId="1" label="Support">
+    <TreeItem
+     onClick={() => navigate('/openticket')}
+     nodeId="2"
+     label="Open ticket"
+    />
+    <TreeItem nodeId="3" label="Closed ticket" />
    </TreeItem>
   </TreeView>
  )

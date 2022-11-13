@@ -16,7 +16,15 @@ import awsmobile from './aws-exports'
 import { useState, useEffect } from 'react'
 import ProtectedRoute from './utils/ProtectedRoute'
 import DashboardHome from './pages/dashboardV2/DashboardHome'
-
+import Account from './pages/dashboardV2/user/account/Account'
+import GiftReceievedHistory from './pages/dashboardV2/user/gift-received-history/GiftReceievedHistory'
+import GiftSentHistory from './pages/dashboardV2/GiftSentHistory'
+import OpenTicket from './pages/dashboardV2/user/support/OpenTicket'
+import ChangePassword from './pages/dashboardV2/user/ChangePassword'
+import Downline from './pages/dashboardV2/genealogy/Downline'
+import Wallet from './pages/dashboardV2/admin/wallet/WalletData'
+import PendingQueries from './pages/dashboardV2/admin/support/PendingQueries'
+import ResolvedQueries from './pages/dashboardV2/admin/support/ResolvedQueries'
 Auth.configure(awsmobile)
 
 function App() {
@@ -37,6 +45,8 @@ function App() {
  }, [loggedIn])
  return (
   <Routes>
+   {/* <Route path="/downline" element={<Downline />} /> */}
+   {/* <Route path="/GiftSentHistory" element={<GiftSentHistory />} /> */}
    <Route
     path="/signIn"
     element={<SignInScreen setIsLoggedIn={setIsLoggedIn} />}
@@ -57,8 +67,18 @@ function App() {
     path="/"
     element={<ProtectedRoute setIsLoggedIn={setIsLoggedIn} user={loggedIn} />}
    >
+    <Route path="/resolvedqueries" element={<ResolvedQueries />} />
+    <Route path="/pendingqueries" element={<PendingQueries />} />
     <Route path="/dashboard" element={<DashboardHome />} />
     <Route path="/directteam" element={<DirectTeam />} />
+    <Route path="/downline" element={<Downline />} />
+    <Route path="/walletdata" element={<Wallet />} />
+
+    <Route path="/account" element={<Account />} />
+    <Route path="/giftreceievedhistory" element={<GiftReceievedHistory />} />
+    <Route path="/ChangePassword" element={<ChangePassword />} />
+    <Route path="/openticket" element={<OpenTicket />} />
+    <Route path="/GiftSentHistory" element={<GiftSentHistory />} />
     <Route path="/genealogytree" element={<GenealogyTree />} />
     <Route path="/activaterequest" element={<ActivateRequest />} />
     <Route path="/adduser" element={<AddUser />} />

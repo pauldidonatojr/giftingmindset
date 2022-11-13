@@ -15,7 +15,7 @@ const ProtectedRoute = ({
   children
  ) : (
   <>
-   <HeaderDrawer setIsLoggedIn={setIsLoggedIn} />
+   <HeaderDrawer user={user} setIsLoggedIn={setIsLoggedIn} />
    <Outlet />
   </>
  )

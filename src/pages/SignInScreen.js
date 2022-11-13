@@ -2,6 +2,7 @@ import React from 'react'
 import PW_Icon from '../assets/icons/Pw_Icon.svg'
 import User_Icon from '../assets/icons/User_Icon.svg'
 import Logo1 from '../assets/images/GM_logo.png'
+import axios from 'axios'
 import {
  Typography,
  CircularProgress,
@@ -40,6 +41,25 @@ const SignInScreen = ({ setIsLoggedIn }) => {
  const [openSnackBar, setOpenSnackBar] = useState(false)
  const [snackBarMessage, setSnackBarMessage] = useState('')
  const [severity, setSeverity] = useState('info')
+ const getUserFromDb = async (email, password) => {
+  try {
+   const dbResponse = await axios.post(
+    'https://thegiftingmindset.com/gfm_demo1/includes/react_auth.php',
+    {
+     type: 'AffiliateLogin',
+     email: email,
+     password: password,
+    },
+    {
+     headers: {},
+    }
+   )
+   console.log('success db : ', dbResponse)
+   return dbResponse
+  } catch (err) {
+   console.log('DB error :', err)
+  }
+ }
  return (
   <BackgroundDiv>
    <MainColDiv>
@@ -58,6 +78,7 @@ const SignInScreen = ({ setIsLoggedIn }) => {
       console.log('OnSubmit click', values)
       try {
        const user = await Auth.signIn(values.Email, values.Password)
+       await getUserFromDb(values.Email, values.Password)
        setIsLoggedIn(true)
        setSnackBarMessage('Success')
        setOpenSnackBar(true)

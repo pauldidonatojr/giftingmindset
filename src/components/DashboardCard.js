@@ -24,37 +24,41 @@ const DashboardCard = ({ card_title, card_data }) => {
      <AddTaskIcon
       style={{
        fontSize: '38px',
-       backgroundColor: '#e0e0e0',
+       backgroundColor: '#313335',
        borderRadius: '18px',
        padding: '5px',
        boxShadow: ' 2px 7px 15px -7px rgba(0,0,0,0.37)',
+       color: '#fff',
       }}
      />
     ) : card_title == 'Active Ids' ? (
      <HowToRegIcon
       style={{
        fontSize: '38px',
-       backgroundColor: '#e0e0e0',
+       backgroundColor: '#313335',
        borderRadius: '18px',
        padding: '5px',
        boxShadow: ' 2px 7px 15px -7px rgba(0,0,0,0.37)',
+       color: '#fff',
       }}
      />
     ) : card_title == 'Total Users' ? (
      <PeopleAltIcon
       style={{
        fontSize: '38px',
-       backgroundColor: '#e0e0e0',
+       backgroundColor: '#313335',
        borderRadius: '18px',
        padding: '5px',
        boxShadow: ' 2px 7px 15px -7px rgba(0,0,0,0.37)',
+       color: '#fff',
       }}
      />
     ) : card_title == 'Total Investment' ? (
      <CurrencyExchangeIcon
       style={{
        fontSize: '38px',
-       backgroundColor: '#e0e0e0',
+       backgroundColor: '#313335',
+       color: '#fff',
        borderRadius: '18px',
        padding: '5px',
        boxShadow: ' 2px 7px 15px -7px rgba(0,0,0,0.37)',
@@ -66,11 +70,19 @@ const DashboardCard = ({ card_title, card_data }) => {
      gutterBottom
      variant="h5"
      component="div"
-     color="text.secondary"
+     style={{
+      color: '#313335',
+     }}
     >
      {card_title}
     </Typography>
-    <Typography textAlign="center" variant="h4">
+    <Typography
+     style={{
+      color: '#fff',
+     }}
+     textAlign="center"
+     variant="h4"
+    >
      {card_data}
     </Typography>
    </CardContainer>

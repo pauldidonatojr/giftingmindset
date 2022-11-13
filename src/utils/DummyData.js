@@ -125,6 +125,65 @@ export const DirectTeamData = [
   Date: '27/05/2022',
  },
 ]
+export const GiftReceievedData = [
+ {
+  sr_no: 1,
+  received_by: 11,
+  payment_type: 'Sponser A',
+  payment_info: '',
+  amount: 10.23,
+  transaction_details: 123456,
+  transaction_id: 'USA',
+  transaction_image: 'https://dummyjson.com/image/i/products/8/1.jpg',
+  approved_date: '2022-07-25 08:05:30',
+ },
+]
+export const DownlineData = [
+ {
+  ID: 1,
+  Parent: 'admin',
+  Distributor: 'test',
+ },
+]
+export const ResolvedQueries = [
+ {
+  sr_no: '1',
+  Title: 'testTitle',
+  Description: 'test description',
+  Image: '',
+  Remark: '',
+  closed_date: '05-07-97',
+ },
+]
+export const PendingQueries = [
+ {
+  sr_no: '1',
+  user_id: '12',
+  Title: 'testTitle',
+  Description: 'test description',
+  Image: '',
+  Date: '05-07-97',
+  Action: '',
+ },
+]
+export const WalletData = [
+ {
+  ID: 1,
+  wallet_name: 'admin',
+  wallet_link: 'test',
+  wallet_account: 'test',
+  Action: 'test',
+ },
+]
+export const OpenTicketData = [
+ {
+  sr_no: 1,
+  Title: '',
+  Description: '',
+  Image: '',
+  Date: '',
+ },
+]
 export const ActivateRequestData = [
  {
   sr_no: 1,
@@ -144,6 +203,7 @@ export const ActivateRequestData = [
   admin_t_image: 'NA',
   date: '2022-07-25 08:05:30',
  },
+
  {
   sr_no: 2,
   given_by: 11,

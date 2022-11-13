@@ -1,11 +1,17 @@
 import { createTheme } from '@mui/material/styles'
 export const theme = createTheme({
  palette: {
-  yellow: '#1e2026',
-  divider_black: '#1b1d22',
-  dull_white: '#E0E0E0',
-  dark_black: '#1B1D22',
-  light_black: '#1E2026',
+  primary: {
+   main: '#313335',
+   dark: '#F0F3F4',
+  },
+  secondary: {
+   main: '#000000',
+  },
+  text: {
+   primary: '#717171',
+   secondary: '#839192',
+  },
  },
  login_Button: {
   color: 'white',

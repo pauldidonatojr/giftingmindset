@@ -7,6 +7,8 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import InputAdornment from '@mui/material/InputAdornment'
 import { WhiteBorderTextField } from './StyledComponents'
 import { theme } from '../Theme'
+import EmailIcon from '@mui/icons-material/Email'
+import CallIcon from '@mui/icons-material/Call'
 
 const MuiTextField = ({ type, label, onChange, value }) => {
  return (
@@ -29,9 +31,16 @@ const MuiTextField = ({ type, label, onChange, value }) => {
        <LocalPhoneIcon />
       ) : label == 'User ID' ? (
        <PersonAddIcon />
-      ) : label == 'Password' ? (
+      ) : (label == 'Password') |
+        (label == 'Current Password') |
+        (label == 'New Password') |
+        (label == 'Confirm Password') ? (
        <KeyIcon />
-      ) : (
+      ) : label == 'Mobile' ? (
+       <CallIcon />
+      ) : label == 'Email' ? (
+       <EmailIcon />
+      ) : label == '' ? null : (
        <AccountBalanceIcon />
       )}
      </InputAdornment>
